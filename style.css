@@ -20,6 +20,104 @@
     font-weight: 400;
     font-size: 120%;
     scroll-behavior: smooth;
-    color: #212121;
-    background-color: #fafafa;
+    color: var(--white);
+    background-color: var(--blue-gray);
+
+    /* PRIMARY COLORS */
+    --black: #2C2C2C;
+    --white: #FAF9F8;
+    --blue-gray: #8EA5AF;
 }
+
+body {}
+
+nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    padding-block-start: 0.5rem;
+    width: 4.8rem;
+}
+
+.btn {
+    background-color: var(--black);
+    padding-inline: 1.375rem;
+    padding-block: 1.375rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+main {}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero {
+    height: 80svh;
+}
+
+hgroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 34%;
+    gap: 1rem;
+    text-align: center;
+}
+
+/* CMS */
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    background-color: tomato;
+}
+
+.txt {}
+
+.doc {
+    height: 24rem;
+    align-items: center;
+}
+.doc iframe {
+    height: 100%;
+}
+
+.pic {}
+
+
+footer {}
+
+h1 {
+    font-weight: 500;
+    font-size: 2rem; 
+    letter-spacing: -0.015rem;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+p {
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+    line-height: 140%;
+}
+
+.footnote {
+    padding-block-start: 0.25rem;
+    font-size: 0.75rem;
+}
+
