@@ -70,6 +70,10 @@ ol {
     align-items: flex-end;
 }
 
+button {
+    cursor: pointer;
+}
+
 nav.bottom {
     bottom: 0;
     padding: 1rem;
