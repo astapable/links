@@ -75,29 +75,42 @@ hgroup {
     text-align: center;
 }
 
+img {
+    width: 100%;
+}
+
 /* CMS */
 
 ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-    width: 100%;
-    background-color: tomato;
+    gap: 1rem;
+    width: 40%;
 }
 
-.txt {}
-
-.doc {
-    height: 24rem;
+li {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
-.doc iframe {
-    height: 100%;
-}
-
+.
+.txt {}
+.doc {}
 .pic {}
+.vid {}
 
+.sizer-1 {
+    width: 55%;
+}
+.sizer-2 {
+    width: 90%;
+}
+
+.sizer-3 {
+    width: 45%;
+}
 
 footer {}
 
