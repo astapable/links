@@ -83,8 +83,12 @@ nav.bottom {
     width: auto;
 }
 
-nav.center .footnote {
-  text-align: right;
+nav.center .footnote :first-of-type{
+    text-align: left;
+}
+
+nav.center .footnote :last-of-type{
+    text-align: right;
 }
 
 .outer {
@@ -155,13 +159,14 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    width: 40%;
+    /* width: 40%; */
+    width: 100%;
 }
 
 li {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1rem;
     width: 100%;
@@ -169,18 +174,45 @@ li {
 
 .wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     width: 100%;
 }
 
+.wrapper .sizer-secondary:first-of-type{
+    text-align: left;
+}
+
+.wrapper .sizer-secondary:last-of-type{
+    text-align: right;
+    visibility: hidden;
+}
+
+.sizer-primary {
+    width: 40%;
+}
+
+.sizer-secondary {
+    width: 30%;
+}
+    
 /* CMS text */
+
+.img {
+    display: flex;
+    flex-direction: column;
+}
+
 .txt{
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 2.5rem;
     background-color: var(--white);
     color: var(--black);
-    height: 60svh;
+    gap: 4rem;
 }
 
 .txt p {
@@ -207,17 +239,15 @@ li {
 
 /* CMS video */
 .vid {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* Standart 16:9 ratio*/
+    position: relative;
 }
 
-/* Learned this embed properties from my prof exp through my first embed video struggles*/
-.vid iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.sizer-primary.vid iframe{
+    width: 100%;
+    height: auto;           /* ключ */
+    aspect-ratio: 16 / 9;   /* ключ */
+    display: block;
+    border: 0;
 }
 
 /* FONT STYLING */
