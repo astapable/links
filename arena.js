@@ -30,14 +30,13 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-
 			<li>
 				<div class="wrapper">
 					<div class="sizer-secondary">
 						<p class="footnote">${ blockData.title }</p>
 					</div>
 					<div class="sizer-primary img">
-						<a href="${ blockData.source.url }">
+						<a href="${blockData.source.url}" target="_blank" rel="noopener noreferrer">
 							<img src="${ blockData.image.medium.src_2x }" alt="">
 						</a>
 					</div>
