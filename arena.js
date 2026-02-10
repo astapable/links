@@ -8,13 +8,13 @@ let placeChannelInfo = (channelData) => {
 	// Target some elements in your HTML:
 	let channelTitle = document.querySelector('#channel-title')
 	let channelDescription = document.querySelector('#channel-description')
-	let channelCount = document.querySelector('#channel-count')
+	// let channelCount = document.querySelector('#channel-count')
 	let channelLink = document.querySelector('#channel-link')
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = channelData.title
 	channelDescription.innerHTML = channelData.description.html
-	channelCount.innerHTML = channelData.counts.blocks
+	// channelCount.innerHTML = channelData.counts.blocks
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
 
@@ -30,21 +30,23 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
+
 			<li>
-				<p><em>Link</em></p>
-				<figure>
-					<picture>
-						<source media="(width < 500px)" srcset="${ blockData.image.small.src_2x }">
-						<source media="(width < 1000px)" srcset="${ blockData.image.medium.src_2x }">
-						<img alt="${blockData.image.alt_text}" src="${ blockData.image.large.src_2x }">
-					</picture>
-					<figcaption>
-						<h3>${ blockData.title }</h3>
-						${ blockData.description.html }
-					</figcaption>
-				</figure>
-				<p><a href="${ blockData.source.url }">See the original ↗</a></p>
+				<div class="wrapper">
+					<div class="sizer-secondary">
+						<p class="footnote">${ blockData.title }</p>
+					</div>
+					<div class="sizer-primary img">
+						<a href="${ blockData.source.url }">
+							<img src="${ blockData.image.medium.src_2x }" alt="">
+						</a>
+					</div>
+					<div class="sizer-secondary">
+						<p class="footnote">${ blockData.title }</p>
+					</div>
+				</div>
 			</li>
+
 			`
 
 		// And puts it into the page!
@@ -56,12 +58,47 @@ let renderBlock = (blockData) => {
 
 	// Images!
 	else if (blockData.type == 'Image') {
-		// …up to you!
+		let imageItem =
+		`
+		<li>
+            <div class="wrapper">
+                <div class="sizer-secondary">
+                     <p class="footnote">${ blockData.title }</p>
+                 </div>
+                <div class="sizer-primary img">
+                    <img src="${blockData.image.medium.src_2x}" alt="">
+                </div>
+                <div class="sizer-secondary">
+                    <p class="footnote">${ blockData.title }</p>
+                </div>
+            </div>
+        </li>
+		`
+
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
 
 	// Text!
 	else if (blockData.type == 'Text') {
-		// …up to you!
+		let textItem =
+		`
+		<li>
+            <div class="wrapper">
+                <div class="sizer-secondary">
+                	<p class="footnote">${ blockData.title }</p>
+                </div>
+                <div class="sizer-primary txt">
+                    <p>${blockData.content.plain}</p>
+                	<p class="footnote">${ blockData.description.plain }</p>
+                </div>
+                <div class="sizer-secondary">
+                    <p class="footnote">${ blockData.title }</p>
+                 </div>
+            </div>
+        </li>
+		`
+
+		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
 
 	// Uploaded (not linked) media…
@@ -87,7 +124,24 @@ let renderBlock = (blockData) => {
 
 		// Uploaded PDFs!
 		else if (contentType.includes('pdf')) {
-			// …up to you!
+			let pdfItem =
+				`
+				<li>
+                    <div class="wrapper">
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                        <div class="sizer-primary doc">
+                        	<iframe src="${ blockData.attachment.url }"></iframe>
+                        </div>
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                    </div>
+                </li>
+				`
+
+				channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
 
 		// Uploaded audio!
@@ -118,9 +172,18 @@ let renderBlock = (blockData) => {
 			let linkedVideoItem =
 				`
 				<li>
-					<p><em>Linked Video</em></p>
-					${ blockData.embed.html }
-				</li>
+                    <div class="wrapper">
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                         <div class="sizer-primary vid">
+                            ${ blockData.embed.html }
+                        </div>
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title}</p>
+                        </div>
+                    </div>
+                </li>
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
@@ -138,7 +201,7 @@ let renderBlock = (blockData) => {
 
 
 
-// A function to display the owner/collaborator info:
+// REMOVED_A function to display the owner/collaborator info:
 let renderUser = (userData) => {
 	let channelUsers = document.querySelector('#channel-users') // Container.
 

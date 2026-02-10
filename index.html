@@ -7,7 +7,7 @@
             @import 'reset.css' layer(reset);
             @import 'style.css' layer(style);
         </style>
-        <!-- <script defer src="assets/arena.js"></script> -->
+        <script defer src="arena.js"></script>
 	</head>
 	<body>
         <nav>
@@ -15,7 +15,7 @@
             <a href="/index.html">
                 <img class="logo" src="img/logo.svg" alt="Murals in New York City">
             </a>
-            <a class="btn" href="mailto:astapable@gmail.com" target="_blank">Email Me</a>
+            <a id="channel-link" class="btn" target="_blank">Open channel</a>
         </nav>
         <nav class="center">
             <!-- While scrolling change to the files name -->
@@ -62,14 +62,17 @@
 		<main>
             <section class="hero">
                 <hgroup>
-                    <h1>Murals in NYC</h1>
-                    <p>This gallery collects murals in New York City as&nbsp;moments of public expression focusing on the images, artists, history and places that shape them. These blocks document how murals function as&nbsp;a way to reflect politics, neighborhoods, culture and change across the&nbsp;city.</p>
+                    <h1 id="channel-title"></h1>
+                    <p id="channel-description"></p>
+                    <!-- <h1>Murals in NYC</h1>
+                    <p>This gallery collects murals in New York City as&nbsp;moments of public expression focusing on the images, artists, history and places that shape them. These blocks document how murals function as&nbsp;a way to reflect politics, neighborhoods, culture and change across the&nbsp;city.</p> -->
                     <p class="footnote">Developed by Evgenii Astapov</p>
                 </hgroup>
             </section>
             <section>
-                <ul>
-                    <li>
+                <ul id="channel-blocks">
+                    <li></li>
+                    <!-- <li>
                         <div class="wrapper">
                             <div class="sizer-secondary">
                                 <p class="footnote">scroll down</p>
@@ -89,8 +92,8 @@
                             </div>
                             <div class="sizer-primary txt">
                                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                            <p class="footnote">- Lorem ipsum dolor</p>
+                                </p>
+                                <p class="footnote">- Lorem ipsum dolor</p>
                             </div>
                             <div class="sizer-secondary">
                                 <p class="footnote">scroll down</p>
@@ -148,7 +151,7 @@
                                 <p class="footnote">scroll down</p>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </section>
         </main>
