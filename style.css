@@ -201,6 +201,15 @@ li {
 }
 
 /* CMS text */
+.aud{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem;
+    background-color: var(--white);
+    color: var(--black);
+    gap: 4rem;
+}
 
 .img {
     display: flex;
@@ -272,4 +281,5 @@ p {
     padding-block-start: 0.25rem;
     font-size: 0.75rem;
 }
+
 

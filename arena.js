@@ -110,9 +110,18 @@ let renderBlock = (blockData) => {
 			let videoItem =
 				`
 				<li>
-					<p><em>Video</em></p>
-					<video controls src="${ blockData.attachment.url }"></video>
-				</li>
+                    <div class="wrapper">
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                         <div class="sizer-primary vid">
+                            ${ blockData.attachment.url }
+                        </div>
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title}</p>
+                        </div>
+                    </div>
+                </li>
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
@@ -149,9 +158,19 @@ let renderBlock = (blockData) => {
 			let audioItem =
 				`
 				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ blockData.attachment.url }"></video>
-				</li>
+                    <div class="wrapper">
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                    	<div class="sizer-primary aud">
+                        	<audio controls src="${blockData.attachment.url}"></audio>
+                            <p class="footnote">${ blockData.description.plain }</p>
+                        </div>
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                    </div>
+                </li>
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -193,7 +212,25 @@ let renderBlock = (blockData) => {
 
 		// Linked audio!
 		else if (embedType.includes('rich')) {
-			// …up to you!
+			let linkedAudioItem =
+				`
+				<li>
+                    <div class="wrapper">
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                    	<div class="sizer-primary aud">
+                        	<a href="${ blockData.source.url }">
+                            <p class="footnote">${ blockData.description.plain }</p>
+                        </div>
+                        <div class="sizer-secondary">
+                            <p class="footnote">${ blockData.title }</p>
+                        </div>
+                    </div>
+                </li>
+				`
+
+			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 		}
 	}
 }
