@@ -109,6 +109,7 @@ nav {
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    z-index: 3;
 }
 
 nav.top {
@@ -165,11 +166,11 @@ nav.bottom {
     width: auto;
 }
 
-nav.center .footnote :first-of-type{
+nav.center .footnote:first-of-type{
     text-align: left;
 }
 
-nav.center .footnote :last-of-type{
+nav.center .footnote:last-of-type{
     text-align: left;
 
     @media (width > 1000px) {
@@ -325,8 +326,9 @@ li {
     width: 100%;
 }
 
+/* ADDRESS_the content inside is too big and pushin height */
 .wrapper .sizer-secondary:first-of-type{
-    visibility: hidden;
+    visibility: hidden; 
 
     @media (width > 1000px) {
         visibility: visible;
@@ -479,4 +481,8 @@ p {
 .footnote {
     padding-block-start: 0.25rem;
     font-size: var(--footnote);
+}
+
+html, body {
+    overflow-x: hidden;
 }
