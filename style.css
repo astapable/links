@@ -84,7 +84,12 @@ nav.center {
 ul {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: var(--gap-medium);
+
+    @media (width > 1000px) {
+        flex-direction: column;
+    }
 }
 
 #channel-blocks {
@@ -161,8 +166,12 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
+
+    @media (width > 1000px) {
+        align-items: center;
+    }
 }
 
 .hero {
@@ -173,9 +182,25 @@ hgroup {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 34%;
-    gap: var(--gap-medium);
-    text-align: center;
+    width: 70%;
+    gap: var(--gap-small);
+    text-align: left;
+
+    @media (width > 600px) {
+        width: 80%;
+        gap: var(--gap-medium);
+    }
+
+    @media (width > 800px) {
+        width: 60%;
+        gap: var(--gap-medium);
+    }
+
+    @media (width > 1000px) {
+        width: 40%;
+        gap: var(--gap-medium);
+        text-align: center;
+    }
 }
 
 img {
@@ -183,18 +208,9 @@ img {
 }
 
 /* CMS */
-/* ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--gap-medium);
-    width: 100%;
-} */
-
 li {
     display: flex;
-    align-items: center;
+    align-items: center;    
     gap: var(--gap-medium);
     width: 100%;
 }
@@ -209,24 +225,58 @@ li {
 }
 
 .wrapper .sizer-secondary:first-of-type{
-    text-align: left;
-    width: 18%;
-    text-wrap: balance;
+    visibility: hidden;
+
+    @media (width > 1000px) {
+        visibility: visible;
+        text-align: left;
+        width: 18%;
+        text-wrap: balance;
+    }
 }
 
 .wrapper .sizer-secondary:last-of-type{
-    text-align: right;
-    visibility: hidden;
-    width: 18%;
-    text-wrap: balance;
+    display: none;
+
+    @media (width > 1000px) {
+        display: block;
+        text-align: right;
+        visibility: hidden;
+        width: 18%;
+        text-wrap: balance;
+    }
 }
 
 .sizer-primary {
-    width: 40%;
+    width: 70%;
+
+    @media (width > 600px) {
+        width: 80%;
+    }
+
+    @media (width > 800px) {
+        width: 60%;
+    }
+
+    @media (width > 1000px) {
+        width: 40%;
+    }
 }
 
 .sizer-secondary {
-    width: 30%;
+    width: 15%;
+
+    @media (width > 600px) {
+        width: 10%;
+    }
+
+    @media (width > 800px) {
+        width: 20%;
+    }
+
+    @media (width > 1000px) {
+        width: 40%;
+    }
 }
 
 /* CMS text */
