@@ -312,11 +312,12 @@ img {
 /* CMS */
 li {
     display: flex;
-    align-items: center;    
+    align-items: center;
     gap: var(--gap-medium);
     width: 100%;
 }
 
+/* ADDRESS_justify center will fix position here */
 .wrapper {
     display: flex;
     flex-direction: row;
@@ -350,7 +351,7 @@ li {
     }
 }
 
-.sizer-primary {
+/* .sizer-primary {
     width: 70%;
 
     @media (width > 600px) {
@@ -382,6 +383,33 @@ li {
     }
 
     @media (width > 1000px) {
+        width: 25%;
+    }
+
+    @media (width > 1200px) {
+        width: 30%;
+    }
+} */
+
+/* TEMPORARY ADDITION_Stays here before I decide how to fix mob design. */
+.sizer-primary {
+    width: 100%;
+
+    @media (width > 1000px) {
+        width: 50%;
+    }
+
+    @media (width > 1200px) {
+        width: 40%;
+    }
+}
+
+.sizer-secondary {
+    display: none;
+    width: 15%;
+
+    @media (width > 1000px) {
+        display: block;
         width: 25%;
     }
 
@@ -483,6 +511,6 @@ p {
     font-size: var(--footnote);
 }
 
-html, body {
+/* html, body {
     overflow-x: hidden;
-}
+} */
