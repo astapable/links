@@ -98,14 +98,6 @@ ul {
     align-items: flex-end;
 }
 
-/* ol {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-small);
-    width: auto;
-    align-items: flex-end;
-} */
-
 button {
     cursor: pointer;
     pointer-events: auto;

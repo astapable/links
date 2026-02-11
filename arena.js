@@ -36,7 +36,7 @@ let renderBlock = (blockData) => {
 						<p class="footnote">${ blockData.title }</p>
 					</div>
 					<div class="sizer-primary img">
-						<a href="${blockData.source.url}" target="_blank" rel="noopener noreferrer">
+						<a href="${blockData.source.url}" target="_blank">
 							<img src="${ blockData.image.medium.src_2x }" alt="">
 						</a>
 					</div>
