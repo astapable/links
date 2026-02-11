@@ -402,6 +402,7 @@ li {
 .aud p {
     text-align: center;
     text-transform: none;
+    width: 100%;
 }
 
 audio {
