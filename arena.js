@@ -115,7 +115,7 @@ let renderBlock = (blockData) => {
                             <p class="footnote">${ blockData.title }</p>
                         </div>
                          <div class="sizer-primary vid">
-                            ${ blockData.attachment.url }
+                        	<video controls src="${ blockData.attachment.url }"></video>
                         </div>
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title}</p>
@@ -163,7 +163,7 @@ let renderBlock = (blockData) => {
                             <p class="footnote">${ blockData.title }</p>
                         </div>
                     	<div class="sizer-primary aud">
-                        	<audio controls src="${blockData.attachment.url}"></audio>
+                        	<audio controls src="${ blockData.attachment.url }"></audio>
                             <p class="footnote">${ blockData.description.plain }</p>
                         </div>
                         <div class="sizer-secondary">
@@ -194,7 +194,8 @@ let renderBlock = (blockData) => {
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
                         </div>
-                         <div class="sizer-primary vid">
+                        <div class="sizer-primary vid">
+							<a href="${ blockData.source.url }"></a>
                             ${ blockData.embed.html }
                         </div>
                         <div class="sizer-secondary">
@@ -220,7 +221,7 @@ let renderBlock = (blockData) => {
                             <p class="footnote">${ blockData.title }</p>
                         </div>
                     	<div class="sizer-primary aud">
-                        	<a href="${ blockData.source.url }">
+                        	<a href="${ blockData.source.url }"></a>
                             <p class="footnote">${ blockData.description.plain }</p>
                         </div>
                         <div class="sizer-secondary">

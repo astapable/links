@@ -29,6 +29,24 @@
     --white: #FAF9F8;
     --gray: #A6A6A6;
     --blue-gray: #8EA5AF;
+
+    /* GAP */
+    --gap-small: 0.5rem;
+    --gap-medium: 1rem;
+    --gap-xlarge: 4rem;
+
+    /* PADDING */
+    --pad-small: 0.5rem;
+    --pad-medium: 1rem;
+    --pad-large: 2.5rem;
+
+    /* BUTTON */
+    --pad-btn: 1.375rem;
+
+    /* FONT SIZE */
+    --h1-title: 2rem;
+    --bodycopy: 1rem;
+    --footnote: 0.75rem;
 }
 
 body::before {
@@ -59,17 +77,34 @@ nav.top {
 nav.center {
     top: 50%;
     transform: translateY(-50%);
-    padding: 1rem;
+    padding: var(--pad-medium);
     pointer-events: none;
 }
 
-ol {
+ul {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--gap-medium);
+}
+
+#channel-blocks {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#filter-area {
     width: auto;
     align-items: flex-end;
 }
+
+/* ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+    width: auto;
+    align-items: flex-end;
+} */
 
 button {
     cursor: pointer;
@@ -78,7 +113,7 @@ button {
 
 nav.bottom {
     bottom: 0;
-    padding: 1rem;
+    padding: var(--pad-medium);
 }
 
 .filter {
@@ -120,15 +155,14 @@ nav.bottom a:nth-child(2) .inner { background-color: var(--black); }
 /* Hover later when I polish design */
 .btn {
     background-color: var(--black);
-    padding-inline: 1.375rem;
-    padding-block: 1.375rem;
+    padding: var(--pad-btn);
     text-transform: uppercase;
     text-align: center;
     font-size: 0.75rem;
 }
 
 main {
-    padding: 1rem;
+    padding: var(--pad-medium);
 }
 
 section {
@@ -148,7 +182,7 @@ hgroup {
     flex-direction: column;
     align-items: center;
     width: 34%;
-    gap: 1rem;
+    gap: var(--gap-medium);
     text-align: center;
 }
 
@@ -157,20 +191,19 @@ img {
 }
 
 /* CMS */
-ul {
+/* ul {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    /* width: 40%; */
+    gap: var(--gap-medium);
     width: 100%;
-}
+} */
 
 li {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--gap-medium);
     width: 100%;
 }
 
@@ -179,17 +212,21 @@ li {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--gap-medium);
     width: 100%;
 }
 
 .wrapper .sizer-secondary:first-of-type{
     text-align: left;
+    width: 18%;
+    text-wrap: balance;
 }
 
 .wrapper .sizer-secondary:last-of-type{
     text-align: right;
     visibility: hidden;
+    width: 18%;
+    text-wrap: balance;
 }
 
 .sizer-primary {
@@ -204,11 +241,21 @@ li {
 .aud{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 2.5rem;
-    background-color: var(--white);
-    color: var(--black);
-    gap: 4rem;
+    padding: var(--pad-large);
+    background-color: var(--black);
+    color: var(--gray);
+    gap: var(--gap-medium);
+    align-items: center;
+}
+
+.aud p {
+    text-align: center;
+    text-transform: none;
+}
+
+audio {
+	block-size: revert;
+	inline-size: 100%;
 }
 
 .img {
@@ -219,11 +266,10 @@ li {
 .txt{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 2.5rem;
+    padding: var(--pad-large);
     background-color: var(--white);
     color: var(--black);
-    gap: 4rem;
+    gap: var(--gap-xlarge);
 }
 
 .txt p {
@@ -255,8 +301,8 @@ li {
 
 .sizer-primary.vid iframe{
     width: 100%;
-    height: auto;           /* ключ */
-    aspect-ratio: 16 / 9;   /* ключ */
+    height: auto;          
+    aspect-ratio: 16 / 9;
     display: block;
     border: 0;
 }
@@ -264,7 +310,7 @@ li {
 /* FONT STYLING */
 h1 {
     font-weight: 500;
-    font-size: 2rem; 
+    font-size: var(--h1-title); 
     letter-spacing: -0.015rem;
     text-transform: uppercase;
     text-wrap: balance;
@@ -272,14 +318,12 @@ h1 {
 
 p {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: var(--bodycopy);
     text-transform: uppercase;
     line-height: 140%;
 }
 
 .footnote {
     padding-block-start: 0.25rem;
-    font-size: 0.75rem;
+    font-size: var(--footnote);
 }
-
-
