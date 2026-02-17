@@ -103,7 +103,45 @@ body::before {
     mix-blend-mode: normal;
 }
 
+/* FONT STYLING */
+h1 {
+    font-weight: 500;
+    font-size: var(--h1-title); 
+    letter-spacing: -0.015rem;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+p {
+    font-weight: 400;
+    font-size: var(--bodycopy);
+    text-transform: uppercase;
+    line-height: 140%;
+}
+
+.footnote {
+    /* padding-block-start: 0.25rem; */
+    font-size: var(--footnote);
+}
+
 /* GENERIC */
+main {
+    padding: var(--pad-medium);
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+
+    @media (width > 1000px) {
+        align-items: center;
+    }
+}
+
 ul {
     display: flex;
     flex-direction: column;
@@ -111,7 +149,14 @@ ul {
     gap: var(--gap-medium);
 }
 
+li {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-medium);
+    width: 100%;
+}
 
+/* NAV */
 nav {
     position: fixed;
     display: flex;
@@ -138,6 +183,7 @@ nav {
         }
 
         .btn {
+            color: var(--white);
             background-color: var(--black);
             padding: var(--pad-btn);
             text-transform: uppercase;
@@ -148,6 +194,11 @@ nav {
             @media (width > 600px) {
                 width: auto;
                 height: auto;
+            }
+
+            &:hover {
+                color: var(--black);
+                background-color: var(--white);
             }
 
             .icon {
@@ -163,38 +214,37 @@ nav {
     
     &.bottom {
         bottom: 0;
-        padding: var(--pad-medium);
+        padding: 0.5rem;
         justify-content: center;
-        width: 100%;
 
-        #filter-area {
+        #filter-menu {
             display: flex;
             flex-direction: row;
-            /* justify-content: space-between; */
             background-color: var(--black);
             padding: 0.25rem;
             gap: 0rem;
-            width: 100%;
         
             @media (width > 1000px) {
                 width: auto;
             }
 
-            .filter {
+            .filter-btn {
+                cursor: pointer;
+                pointer-events: auto;
+                color: var(--white);
+                background-color: var(--black);
+                padding-block: 0.5rem;
+                padding-inline: 0.75rem;
                 width: 100%;
+                text-align: center;
+            
+                &:hover {
+                    color: var(--black);
+                    background-color: var(--white);
+                }
             }
         }
     } 
-}
-
-button {
-    cursor: pointer;
-    pointer-events: auto;
-    background-color: var(--blue-gray);
-    padding-block: 0.5rem;
-    padding-inline: 0.75rem;
-    width: 100%;
-    text-align: center;
 }
 
 .btn p {
@@ -239,10 +289,6 @@ nav.bottom a:nth-child(3) .inner { background-color: var(--black); } */
 } */
 
 
-
-
-
-
 #channel-blocks {
     align-items: center;
     justify-content: center;
@@ -262,8 +308,6 @@ nav.bottom a:nth-child(3) .inner { background-color: var(--black); } */
         flex-direction: column;
     }
 } */
-
-
 
 /* nav.bottom {
     bottom: 0;
@@ -311,23 +355,6 @@ nav.bottom a:nth-child(2) .inner { background-color: var(--black); } */
 
 
 
-main {
-    padding: var(--pad-medium);
-    width: 100%;
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 100%;
-
-    @media (width > 1000px) {
-        align-items: center;
-    }
-}
-
 .hero {
     padding-block-start: 20svh;
     height: 80svh;
@@ -370,12 +397,7 @@ img {
 }
 
 /* CMS */
-li {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-medium);
-    width: 100%;
-}
+
 
 /* ADDRESS_justify center will fix position here */
 .wrapper {
@@ -549,28 +571,3 @@ audio {
     display: block;
     border: 0;
 }
-
-/* FONT STYLING */
-h1 {
-    font-weight: 500;
-    font-size: var(--h1-title); 
-    letter-spacing: -0.015rem;
-    text-transform: uppercase;
-    text-wrap: balance;
-}
-
-p {
-    font-weight: 400;
-    font-size: var(--bodycopy);
-    text-transform: uppercase;
-    line-height: 140%;
-}
-
-.footnote {
-    /* padding-block-start: 0.25rem; */
-    font-size: var(--footnote);
-}
-
-/* html, body {
-    overflow-x: hidden;
-} */
