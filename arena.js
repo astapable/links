@@ -30,7 +30,7 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li>
+			<li class="list-item" data-category="link">
 				<div class="wrapper">
 					<div class="sizer-secondary">
 						<p class="footnote">${ blockData.title }</p>
@@ -59,7 +59,7 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Image') {
 		let imageItem =
 		`
-		<li>
+		<li class="list-item" data-category="image">
             <div class="wrapper">
                 <div class="sizer-secondary">
                      <p class="footnote">${ blockData.title }</p>
@@ -81,7 +81,7 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Text') {
 		let textItem =
 		`
-		<li>
+		<li class="list-item" data-category="text">
             <div class="wrapper">
                 <div class="sizer-secondary">
                 	<p class="footnote">${ blockData.title }</p>
@@ -109,7 +109,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="list-item" data-category="video">
                     <div class="wrapper">
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
@@ -134,7 +134,7 @@ let renderBlock = (blockData) => {
 		else if (contentType.includes('pdf')) {
 			let pdfItem =
 				`
-				<li>
+				<li class="list-item" data-category="text">
                     <div class="wrapper">
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
@@ -157,7 +157,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
+				<li class="list-item" data-category="audio">
                     <div class="wrapper">
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
@@ -189,7 +189,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
+				<li class="list-item" data-category="video">
                     <div class="wrapper">
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
@@ -215,7 +215,7 @@ let renderBlock = (blockData) => {
 		else if (embedType.includes('rich')) {
 			let linkedAudioItem =
 				`
-				<li>
+				<li class="list-item" data-category="audio">
                     <div class="wrapper">
                         <div class="sizer-secondary">
                             <p class="footnote">${ blockData.title }</p>
@@ -294,3 +294,46 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 		renderBlock(blockData) // Pass the single block’s data to the render function.
 	})
 })
+
+
+
+// FILTERING
+// const since the element won't be changed.
+const filterMenu = document.querySelector('#filter-menu');
+
+// Set .active to "All" filter on page load (this add the style only but not filter it yet)
+if (filterMenu) {
+	const defaultBtn = document.querySelector('.filter-btn[data-category="all"]');
+	if (defaultBtn) defaultBtn.classList.add('active');
+
+	// Here what makes actually filter happens on page load for "All"
+	document.querySelectorAll('.list-item').forEach((item) => {
+		item.style.display = 'flex';
+	});
+
+	// Set where .active happens
+	filterMenu.addEventListener('click', (e) => {
+		const buttonClicked = e.target.closest('.filter-btn');
+		if (!buttonClicked) return;
+
+		// Denote that we need data-category
+		const category = buttonClicked.dataset.category;
+
+		// Set adding the .active on click
+		document.querySelectorAll('.filter-btn').forEach((button) => {
+			button.classList.remove('active');
+		});
+		buttonClicked.classList.add('active');
+
+		// Filtering happens here. Basically show/hide type of interaction
+		const items = document.querySelectorAll('.list-item');
+
+		items.forEach((item) => {
+			if (category === 'all' || item.dataset.category === category) {
+				item.style.display = 'flex';
+			} else {
+				item.style.display = 'none';
+			}
+		});
+	});
+}

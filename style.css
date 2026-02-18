@@ -25,8 +25,9 @@
 
     /* PRIMARY COLORS */
     --black: #2C2C2C;
-    --white: #FAF9F8;
+    --dark-gray: #383838;
     --gray: #A6A6A6;
+    --white: #FAF9F8;
     --blue-gray: #8EA5AF;
 
     /* GAP */
@@ -147,7 +148,6 @@ section, header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
     width: 100%;
 
     @media (width > 1000px) {
@@ -158,8 +158,8 @@ section, header {
 ul {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     gap: var(--gap-medium);
+    width: 100%;
 }
 
 li {
@@ -252,6 +252,11 @@ nav {
                 text-align: center;
             
                 &:hover {
+                    color: var(--white);
+                    background-color: var(--dark-gray);
+                }
+
+                &.active {
                     color: var(--black);
                     background-color: var(--white);
                 }
@@ -324,17 +329,12 @@ nav.bottom a:nth-child(2) .inner { background-color: var(--black); } */
         }
     
         #channel-blocks {
-            align-items: center;
+            /* align-items: center; */
             justify-content: center;
             width: 100%;
         }
     }
 }
-
-
-
-
-
 
 
 /* CMS */
@@ -349,6 +349,7 @@ img {
     justify-content: space-between;
     gap: var(--gap-medium);
     width: 100%;
+    
 }
 
 /* ADDRESS_the content inside is too big and pushin height */
@@ -374,46 +375,6 @@ img {
         text-wrap: balance;
     }
 }
-
-/* .sizer-primary {
-    width: 70%;
-
-    @media (width > 600px) {
-        width: 80%;
-    }
-
-    @media (width > 800px) {
-        width: 60%;
-    }
-
-    @media (width > 1000px) {
-        width: 50%;
-    }
-
-    @media (width > 1200px) {
-        width: 40%;
-    }
-}
-
-.sizer-secondary {
-    width: 15%;
-
-    @media (width > 600px) {
-        width: 10%;
-    }
-
-    @media (width > 800px) {
-        width: 20%;
-    }
-
-    @media (width > 1000px) {
-        width: 25%;
-    }
-
-    @media (width > 1200px) {
-        width: 30%;
-    }
-} */
 
 /* TEMPORARY ADDITION_Stays here before I decide how to fix mob design. */
 .sizer-primary {
@@ -506,10 +467,14 @@ audio {
     position: relative;
 }
 
-.sizer-primary.vid iframe{
+.sizer-primary.vid iframe,
+.sizer-primary.vid video{
     width: 100%;
+    display: block;
+}
+
+.sizer-primary.vid iframe {
     height: auto;          
     aspect-ratio: 16 / 9;
-    display: block;
     border: 0;
 }
