@@ -319,9 +319,9 @@ if (filterMenu) {
 		// Denote that we need data-category
 		const category = buttonClicked.dataset.category;
 
-		// Set adding the .active on click
-		document.querySelectorAll('.filter-btn').forEach((button) => {
-			button.classList.remove('active');
+		// Set adding the .active on click. 
+		document.querySelectorAll('.filter-btn').forEach((filterButton) => {
+			filterButton.classList.remove('active'); // it takes .filter-btn, finds all the sub classes added to that class and removes the specific one - .active
 		});
 		buttonClicked.classList.add('active');
 
