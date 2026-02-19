@@ -31,19 +31,17 @@ let renderBlock = (blockData) => {
 		let linkItem =
 			`
 			<li class="list-item" data-category="link">
-				<div class="wrapper">
-					<div class="sizer-secondary">
-						<p class="footnote">${ blockData.title }</p>
-					</div>
-					<div class="sizer-primary img">
-						<a href="${blockData.source.url}" target="_blank">
-							<img src="${ blockData.image.medium.src_2x }" alt="">
-						</a>
-					</div>
-					<div class="sizer-secondary">
-						<p class="footnote">${ blockData.title }</p>
-					</div>
-				</div>
+				<header class="sizer-secondary">
+					<p class="footnote">${ blockData.title }</p>
+				</header>
+				<article class="sizer-primary img">
+					<a href="${blockData.source.url}" target="_blank">
+						<img src="${ blockData.image.medium.src_2x }" alt="">
+					</a>
+				</article>
+				<header class="sizer-secondary">
+					<p class="footnote">${ blockData.title }</p>
+				</header>
 			</li>
 
 			`
@@ -60,17 +58,15 @@ let renderBlock = (blockData) => {
 		let imageItem =
 		`
 		<li class="list-item" data-category="image">
-            <div class="wrapper">
-                <div class="sizer-secondary">
-                     <p class="footnote">${ blockData.title }</p>
-                 </div>
-                <div class="sizer-primary img">
-                    <img src="${blockData.image.medium.src_2x}" alt="">
-                </div>
-                <div class="sizer-secondary">
-                    <p class="footnote">${ blockData.title }</p>
-                </div>
-            </div>
+            <header class="sizer-secondary">
+                <p class="footnote">${ blockData.title }</p>
+            </header>
+            <article class="sizer-primary img">
+                <img src="${blockData.image.medium.src_2x}" alt="">
+            </article>
+            <header class="sizer-secondary">
+            	<p class="footnote">${ blockData.title }</p>
+            </header>
         </li>
 		`
 
@@ -82,18 +78,16 @@ let renderBlock = (blockData) => {
 		let textItem =
 		`
 		<li class="list-item" data-category="text">
-            <div class="wrapper">
-                <div class="sizer-secondary">
-                	<p class="footnote">${ blockData.title }</p>
-                </div>
-                <div class="sizer-primary txt">
-                    <p>${blockData.content.plain}</p>
-                	<p class="footnote">${ blockData.description.plain }</p>
-                </div>
-                <div class="sizer-secondary">
-                    <p class="footnote">${ blockData.title }</p>
-                 </div>
-            </div>
+			<header class="sizer-secondary">
+				<p class="footnote">${ blockData.title }</p>
+			</header>
+			<article class="sizer-primary txt">
+				<p>${blockData.content.plain}</p>
+				<p class="footnote">${ blockData.description.plain }</p>
+			</article>
+            <header class="sizer-secondary">
+                <p class="footnote">${ blockData.title }</p>
+             </header>
         </li>
 		`
 
@@ -110,17 +104,15 @@ let renderBlock = (blockData) => {
 			let videoItem =
 				`
 				<li class="list-item" data-category="video">
-                    <div class="wrapper">
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                         <div class="sizer-primary vid">
-                        	<video controls src="${ blockData.attachment.url }"></video>
-                        </div>
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title}</p>
-                        </div>
-                    </div>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
+                    <article class="sizer-primary vid">
+                        <video controls src="${ blockData.attachment.url }"></video>
+                    </article>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title}</p>
+                    </header>
                 </li>
 				`
 
@@ -135,17 +127,15 @@ let renderBlock = (blockData) => {
 			let pdfItem =
 				`
 				<li class="list-item" data-category="text">
-                    <div class="wrapper">
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                        <div class="sizer-primary doc">
-                        	<iframe src="${ blockData.attachment.url }"></iframe>
-                        </div>
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                    </div>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
+                    <article class="sizer-primary doc">
+                        <iframe src="${ blockData.attachment.url }"></iframe>
+                    </article>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
                 </li>
 				`
 
@@ -158,18 +148,16 @@ let renderBlock = (blockData) => {
 			let audioItem =
 				`
 				<li class="list-item" data-category="audio">
-                    <div class="wrapper">
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                    	<div class="sizer-primary aud">
-                        	<audio controls src="${ blockData.attachment.url }"></audio>
-                            <p class="footnote">${ blockData.description.plain }</p>
-                        </div>
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                    </div>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
+                    <article class="sizer-primary aud">
+                        <audio controls src="${ blockData.attachment.url }"></audio>
+                        <p class="footnote">${ blockData.description.plain }</p>
+                    </article>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
                 </li>
 				`
 
@@ -190,18 +178,16 @@ let renderBlock = (blockData) => {
 			let linkedVideoItem =
 				`
 				<li class="list-item" data-category="video">
-                    <div class="wrapper">
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                        <div class="sizer-primary vid">
-							<a href="${ blockData.source.url }"></a>
-                            ${ blockData.embed.html }
-                        </div>
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title}</p>
-                        </div>
-                    </div>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
+                    <article class="sizer-primary vid">
+						<a href="${ blockData.source.url }"></a>
+                        ${ blockData.embed.html }
+                    </article>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title}</p>
+                    </header>
                 </li>
 				`
 
@@ -216,18 +202,16 @@ let renderBlock = (blockData) => {
 			let linkedAudioItem =
 				`
 				<li class="list-item" data-category="audio">
-                    <div class="wrapper">
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                    	<div class="sizer-primary aud">
-                        	<a href="${ blockData.source.url }"></a>
-                            <p class="footnote">${ blockData.description.plain }</p>
-                        </div>
-                        <div class="sizer-secondary">
-                            <p class="footnote">${ blockData.title }</p>
-                        </div>
-                    </div>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
+                    <article class="sizer-primary aud">
+                        <a href="${ blockData.source.url }"></a>
+                        <p class="footnote">${ blockData.description.plain }</p>
+                    </article>
+                    <header class="sizer-secondary">
+                        <p class="footnote">${ blockData.title }</p>
+                    </header>
                 </li>
 				`
 
@@ -293,11 +277,16 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 
 		renderBlock(blockData) // Pass the single block’s data to the render function.
 	})
+	// 01. ADDITION FOR INTERSECTION OBSERVER. This connects Intersection Observer to my .list-items and follow when they enter the page
+	// 02. Later when the .list-item enters viewport the callback triggers and it adds the .show class from line 350
+	document.querySelectorAll('.sizer-primary').forEach(el => observer.observe(el))
 })
 
 
 
+
 // FILTERING
+// SOURCE: https://stackoverflow.com/questions/69229348/filter-html-elements-vanilla-js
 // const since the element won't be changed.
 const filterMenu = document.querySelector('#filter-menu');
 
@@ -326,9 +315,9 @@ if (filterMenu) {
 		buttonClicked.classList.add('active');
 
 		// Filtering happens here. Basically show/hide type of interaction
-		const items = document.querySelectorAll('.list-item');
+		const lsitItems = document.querySelectorAll('.list-item');
 
-		items.forEach((item) => {
+		lsitItems.forEach((item) => {
 			if (category === 'all' || item.dataset.category === category) {
 				item.style.display = 'flex';
 			} else {
@@ -337,3 +326,51 @@ if (filterMenu) {
 		});
 	});
 }
+
+// 01. ADDITION - INTERSECTION OBSERVER. This wasnt working until I connected Intersection Observer to the fetch process. 
+// 02. Before that .list-item did not appear in the DOM. Line 296
+const observer = new IntersectionObserver ((entries)=>{
+	entries.forEach((entry)=>{
+		if(entry.isIntersecting){
+			console.log(entry.target)
+			entry.target.classList.add ('show')	
+		} else {
+			entry.target.classList.remove ('show')
+		}
+	})
+}, {})
+
+const listWrappers = document.querySelectorAll('.sizer-primary'); 
+listWrappers.forEach(el => observer.observe(el))
+
+// const flair = document.querySelector(".flair");
+
+// let targetX = 0, targetY = 0;
+// let currentX = 0, currentY = 0;
+
+// const ease = 0.12;
+
+// // СДВИГ относительно курсора
+// const offsetX = 50;  // вправо
+// const offsetY = 55;  // вниз
+
+// window.addEventListener("mousemove", (e) => {
+//   targetX = e.clientX + offsetX;
+//   targetY = e.clientY + offsetY;
+// }, { passive: true });
+
+// function tick() {
+//   currentX += (targetX - currentX) * ease;
+//   currentY += (targetY - currentY) * ease;
+
+//   flair.style.transform =
+//     `translate(-50%, -50%) translate3d(${currentX}px, ${currentY}px, 0)`;
+
+//   requestAnimationFrame(tick);
+// }
+
+// tick();
+
+
+
+
