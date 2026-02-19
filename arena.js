@@ -284,7 +284,6 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 
 
 
-
 // FILTERING
 // SOURCE: https://stackoverflow.com/questions/69229348/filter-html-elements-vanilla-js
 // const since the element won't be changed.
@@ -327,6 +326,8 @@ if (filterMenu) {
 	});
 }
 
+
+// INTERSECTION OBSERVER
 // 01. ADDITION - INTERSECTION OBSERVER. This wasnt working until I connected Intersection Observer to the fetch process. 
 // 02. Before that .list-item did not appear in the DOM. Line 296
 const observer = new IntersectionObserver ((entries)=>{
@@ -342,6 +343,33 @@ const observer = new IntersectionObserver ((entries)=>{
 
 const listWrappers = document.querySelectorAll('.sizer-primary'); 
 listWrappers.forEach(el => observer.observe(el))
+
+
+
+// SCROLL DIRECTION CHECKER. Checks scroll direction 
+let previousScroll = window.scrollY; // Sows how much has already been scrolled on the page
+
+function updateScrollDir() {
+	const y = window.scrollY;
+
+	if (y === previousScroll) return; // <- важно
+
+	let dir;
+
+	if (y > previousScroll) {
+		dir = "down";
+	} else {
+		dir = "up";
+	}
+
+	// Set the data-scroll-dir attribute on <html>
+	document.documentElement.setAttribute("data-scroll-dir", dir);
+
+	previousScroll = y;
+}
+
+updateScrollDir();
+window.addEventListener("scroll", updateScrollDir, { passive: true });
 
 // const flair = document.querySelector(".flair");
 
