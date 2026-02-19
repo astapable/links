@@ -194,8 +194,8 @@ nav {
             padding: var(--pad-btn);
             text-transform: uppercase;
             text-align: center;
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2.25rem;
+            height: 2.25rem;
 
             @media (width > 600px) {
                 width: auto;
@@ -244,14 +244,25 @@ nav {
             }
 
             .filter-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 cursor: pointer;
                 pointer-events: auto;
                 color: var(--white);
                 background-color: var(--black);
-                padding-block: var(--pad-fltr-btn-block);
-                padding-inline: var(--pad-fltr-btn-inline);
+                padding: var(--pad-btn);
                 width: 100%;
                 text-align: center;
+                width: 2.25rem;
+                height: 2.25rem;
+
+                @media (width > 600px) {
+                    padding-block: var(--pad-fltr-btn-block);
+                    padding-inline: var(--pad-fltr-btn-inline);
+                    width: auto;
+                    height: auto;
+                }
             
                 &:hover {
                     color: var(--white);
@@ -262,10 +273,39 @@ nav {
                     color: var(--black);
                     background-color: var(--white);
                 }
+
+                p {
+                    font-size: 0.75rem;
+                    display: none;
+
+                    @media (width > 600px) {
+                        display: block;
+                    }
+                }
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+
+                    @media (width > 600px) {
+                        display: none;
+                    }
+                }
             }
         }
     } 
 }
+
+img {
+    width: 100%;
+}
+
+svg {
+    width: 80%;
+}
+
+.filter-btn .icon path { fill: var(--white); }           /* обычный */
+.filter-btn.active .icon path { fill: var(--black); }
 
 .hero {
     padding-block-start: 20svh;
