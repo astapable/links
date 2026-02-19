@@ -464,7 +464,7 @@ nav.bottom a:nth-child(1) .inner { background-color: var(--white); }
 nav.bottom a:nth-child(2) .outer { background-color: var(--white); }
 nav.bottom a:nth-child(2) .inner { background-color: var(--black); } */
 
-/* .flair {
+.flair {
   width: 4.25rem;
   position: fixed;
   top: 0;
@@ -473,4 +473,4 @@ nav.bottom a:nth-child(2) .inner { background-color: var(--black); } */
   transform: translate(-50%, -50%);
   will-change: transform;
   z-index: 3;
-} */
+}

@@ -371,34 +371,32 @@ function updateScrollDir() {
 updateScrollDir();
 window.addEventListener("scroll", updateScrollDir, { passive: true });
 
-// const flair = document.querySelector(".flair");
+const flair = document.querySelector(".flair");
 
-// let targetX = 0, targetY = 0;
-// let currentX = 0, currentY = 0;
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
 
-// const ease = 0.12;
+const ease = 0.12;
 
-// // СДВИГ относительно курсора
-// const offsetX = 50;  // вправо
-// const offsetY = 55;  // вниз
+// Placement cgange accoring to pointer
+const offsetX = 50;  // to the right
+const offsetY = 55;  // to the bottom
 
-// window.addEventListener("mousemove", (e) => {
-//   targetX = e.clientX + offsetX;
-//   targetY = e.clientY + offsetY;
-// }, { passive: true });
+window.addEventListener("mousemove", (e) => {
+	targetX = e.clientX + offsetX;
+	targetY = e.clientY + offsetY;
+}, { passive: true });
 
-// function tick() {
-//   currentX += (targetX - currentX) * ease;
-//   currentY += (targetY - currentY) * ease;
+function tick() {
+	currentX += (targetX - currentX) * ease;
+	currentY += (targetY - currentY) * ease;
 
-//   flair.style.transform =
-//     `translate(-50%, -50%) translate3d(${currentX}px, ${currentY}px, 0)`;
+	flair.style.transform =
+		`translate(-50%, -50%) translate3d(${currentX}px, ${currentY}px, 0)`;
 
-//   requestAnimationFrame(tick);
-// }
+	requestAnimationFrame(tick);
+}
 
-// tick();
-
-
+tick();
 
 
