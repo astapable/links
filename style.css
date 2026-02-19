@@ -238,10 +238,7 @@ nav {
             background-color: var(--black);
             padding: 0.25rem;
             gap: 0rem;
-        
-            @media (width > 1000px) {
-                width: auto;
-            }
+            width: auto;
 
             .filter-btn {
                 display: flex;
@@ -301,7 +298,7 @@ img {
 }
 
 svg {
-    width: 80%;
+    width: 100%;
 }
 
 .filter-btn .icon path { fill: var(--white); }           /* обычный */
