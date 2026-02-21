@@ -89,18 +89,18 @@
     }
 
     /* ------------- FONT SIZE ------------- */
-    --h1-title: 1.25rem;
+    --h2-title: 1.25rem;
     --bodycopy: 0.75rem;
     --footnote: 0.625rem;
 
     @media (width > 600px) {
-        --h1-title: 1.75rem;
+        --h2-title: 1.75rem;
         --bodycopy: 1rem;
         --footnote: 0.75rem;
     }
 
     @media (width > 800px) {
-        --h1-title: 2rem;
+        --h2-title: 2rem;
     }
 }
 
@@ -118,9 +118,9 @@ body::before {
 }
 
 /* ------------- FONT STYLING ------------- */
-h1 {
+h2 {
     font-weight: 500;
-    font-size: var(--h1-title); 
+    font-size: var(--h2-title); 
     letter-spacing: -0.015rem;
     text-transform: uppercase;
     text-wrap: balance;
