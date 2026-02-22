@@ -18,7 +18,27 @@ let placeChannelInfo = (channelData) => {
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
 
+// ADDITION_Gets a YouTube video ID from a URL (watch / embed / shorts / youtu.be).
+// ADDITION_Returns the ID string or null if it can’t find one.
+function getYouTubeId(url = "") {
+	try {
+    	const u = new URL(url);
 
+    	return (
+     	u.searchParams.get("v") ||
+      	u.pathname.match(/\/(embed|shorts)\/([^/?]+)/)?.[2] ||
+      	(u.hostname.includes("youtu.be") ? u.pathname.split("/")[1] : null)
+    	);
+  	} catch {
+    	return null;
+  	}
+}
+
+// ADDITION_Builds a YouTube thumbnail image URL from a video ID.
+// ADDITION_Quality controls the thumb size (default: 'hqdefault').
+function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
+	return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
+}
 
 // Then our big function for specific-block-type rendering:
 let renderBlock = (blockData) => {
@@ -48,9 +68,6 @@ let renderBlock = (blockData) => {
 
 		// And puts it into the page!
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
-
-		// More on template literals:
-		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 	}
 
 	// Images!
@@ -117,9 +134,6 @@ let renderBlock = (blockData) => {
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
-
-			// More on `video`, like the `autoplay` attribute:
-			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 		}
 
 		// Uploaded PDFs!
@@ -162,9 +176,6 @@ let renderBlock = (blockData) => {
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
-
-			// More on`audio`:
-			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 		}
 	}
 
@@ -174,27 +185,39 @@ let renderBlock = (blockData) => {
 
 		// Linked video!
 		if (embedType.includes('video')) {
-			// …still up to you, but here’s an example `iframe` element:
+			
+			// ADDITION_Get the main link for this block
+			let href = blockData?.source?.url || blockData?.url || ""; 
+			// ADDITION_Extract the YouTube video ID from the link (if it’s a URL).
+			let ytId = getYouTubeId(href);
+
+			// ADDITION_Pick a thumbnail URL and use Are.na image sizes if provided OR use embed thumbnail OR build a YouTube thumbnail URL from the video ID.
+			let thumb =
+				blockData?.image?.display?.url ||
+				blockData?.image?.large?.url ||
+				blockData?.image?.original?.url ||
+				blockData?.image?.thumb?.url ||
+				blockData?.embed?.thumbnail_url ||
+				(ytId && `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`) // && means if A is true in goes to B , if false it returns to A.
+			
 			let linkedVideoItem =
 				`
 				<li class="list-item" data-category="video">
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title }</p>
-                    </header>
-                    <article class="sizer-primary vid">
-						<a href="${ blockData.source.url }"></a>
-                        ${ blockData.embed.html }
-                    </article>
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title}</p>
-                    </header>
-                </li>
+					<header class="sizer-secondary">
+						<p class="footnote">${ blockData.title }</p>
+					</header>
+					<article class="sizer-primary vid">
+						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
+							<img src="${thumb}" alt="${blockData.title || "Video"}" loading="lazy">
+						</a>
+					</article>
+					<header class="sizer-secondary">
+						<p class="footnote">${ blockData.title }</p>
+					</header>
+				</li>
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
-
-			// More on `iframe`:
-			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
 
 		// Linked audio!
