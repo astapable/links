@@ -395,6 +395,21 @@ const observer = new IntersectionObserver ((entries)=>{
 const listWrappers = document.querySelectorAll('.sizer-primary'); 
 listWrappers.forEach(el => observer.observe(el))
 
+// INTERSECTION OBSERVER for .nav.bottom
+// Follow .hero section
+const heroTrigger = document.querySelector('.hero');
+
+if (heroTrigger) {
+	const navObserver = new IntersectionObserver(
+		([entry]) => {
+			const showNav = entry.intersectionRatio < 0.6; 
+			document.documentElement.classList.toggle('nav-visible', showNav); // When I scroll 40% of .hero appear
+		},
+			{threshold: [0.6] } // Use cllbak on 40% of .hero appear when back
+	);
+
+	navObserver.observe(heroTrigger);
+}
 
 
 // SCROLL DIRECTION CHECKER. Checks scroll direction 
@@ -408,13 +423,13 @@ function updateScrollDir() {
 	let dir;
 
 	if (y > previousScroll) {
-		dir = "down";
+		dir = 'down';
 	} else {
-		dir = "up";
+		dir = 'up';
 	}
 
 	// Set the data-scroll-dir attribute on <html>
-	document.documentElement.setAttribute("data-scroll-dir", dir);
+	document.documentElement.setAttribute('data-scroll-dir', dir);
 
 	previousScroll = y;
 }

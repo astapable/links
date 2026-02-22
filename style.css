@@ -149,9 +149,19 @@ p {
 
 /* ------------- GENERIC ------------- */
 main {
+    position: relative;
     padding: var(--pad-medium);
     width: 100%;
+
+    #nav-trigger{
+        position: absolute;
+        top: 100svh;
+        left: 0;
+        width: 1px;
+        height: 1px;
+    }
 }
+
 
 section, header {
     display: flex;
@@ -500,4 +510,19 @@ html[data-scroll-dir="up"] .sizer-primary {
     transform: scale(1);
 }
 
+nav.bottom {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 250ms ease, transform 250ms ease, visibility 0s linear 250ms;
+}
 
+/* показываем после триггера */
+html.nav-visible nav.bottom {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 250ms ease, transform 250ms ease, visibility 0s;
+}
