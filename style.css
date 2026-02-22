@@ -276,6 +276,14 @@ nav {
                     width: auto;
                     height: auto;
                 }
+
+                .icon path {
+                    fill: var(--white);
+                }
+
+                &.active .icon path {
+                    fill: var(--black);
+                }
             
                 &:hover {
                     color: var(--white);
@@ -317,8 +325,7 @@ svg {
     width: 100%;
 }
 
-.filter-btn .icon path { fill: var(--white); }           /* обычный */
-.filter-btn.active .icon path { fill: var(--black); }
+
 
 .hero {
     padding-block-start: 20svh;
@@ -428,7 +435,7 @@ svg {
         }
 
         /* PDF */
-        &.doc {
+        /* &.doc {
             height: 95svh;
             overflow: hidden;
             position: relative;
@@ -439,7 +446,7 @@ svg {
                 display: block;
                 border: 0;
             }
-        }
+        } */
 
         /* VIDEO */
         &.vid {
@@ -492,24 +499,5 @@ html[data-scroll-dir="up"] .sizer-primary {
 .sizer-primary.show {
     transform: scale(1);
 }
-
-/* .outer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.inner {
-    width: 0.813rem;
-    height: 0.813rem;
-} */
-
-/* nav.bottom a:nth-child(1) .outer { background-color: var(--black); }
-nav.bottom a:nth-child(1) .inner { background-color: var(--white); }
-
-nav.bottom a:nth-child(2) .outer { background-color: var(--white); }
-nav.bottom a:nth-child(2) .inner { background-color: var(--black); } */
 
 
