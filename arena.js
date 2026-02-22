@@ -208,7 +208,7 @@ let renderBlock = (blockData) => {
 					</header>
 					<article class="sizer-primary vid">
 						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
-							<img src="${thumb}" alt="${blockData.title || "Video"}" loading="lazy">
+							<img src="${thumb}" alt="${ blockData.title }">
 						</a>
 					</article>
 					<header class="sizer-secondary">
