@@ -436,26 +436,7 @@ function updateScrollDir() {
 
 
 
-// const bg = document.querySelector(".back");
-// let latestY = 0;
-// let ticking = false;
-
-// // скорость параллакса: 0.1–0.25 обычно ок
-// const speed = 0.04;
-
-// function update() {
-//   bg.style.transform = `translateY(${latestY * speed}px)`;
-//   ticking = false;
-// }
-
-// window.addEventListener("scroll", () => {
-//   latestY = window.scrollY;
-//   if (!ticking) {
-//     requestAnimationFrame(update);
-//     ticking = true;
-//   }
-// }, { passive: true });
-
+// https://www.youtube.com/watch?v=1lUKqISgRH0
 const canvas = document.querySelector('#draw');
 const ctx = canvas.getContext('2d')
 
@@ -508,3 +489,24 @@ canvas.addEventListener('mouseout', () => {
 	isDrawing = false;
 	clearCanvas();
 });
+
+
+const bg = document.querySelector(".back");
+let latestY = 0;
+let ticking = false;
+
+// скорость параллакса: 0.1–0.25 обычно ок
+const speed = 0.04;
+
+function update() {
+  bg.style.transform = `translateY(${latestY * speed}px)`;
+  ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+  latestY = window.scrollY;
+  if (!ticking) {
+    requestAnimationFrame(update);
+    ticking = true;
+  }
+}, { passive: true });
