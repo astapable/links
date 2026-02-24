@@ -93,9 +93,11 @@ let renderBlock = (blockData) => {
 				<p class="footnote">${ blockData.title }</p>
 			</header>
 			<article class="sizer-primary img">
-				<a href="${ blockData.source.url }" target="_blank">
-					<img src="${ blockData.image.medium.src_2x }" alt="">
-				</a>
+				<div class="masked">
+					<a href="${ blockData.source.url }" target="_blank">
+						<img src="${ blockData.image.medium.src_2x }" alt="">
+					</a>
+				</div>
 			</article>
 			<header class="sizer-secondary">
 				<p class="footnote">${ blockData.title }</p>
@@ -164,9 +166,11 @@ let renderBlock = (blockData) => {
 					<p class="footnote">${blockData.title}</p>
 				</header>
 				<article class="sizer-primary vid">
-					<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
-						<img src="${thumb}" alt="${blockData.title}" loading="lazy">
-					</a>
+					<div class="masked">
+						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
+							<img src="${thumb}" alt="${blockData.title}" loading="lazy">
+						</a>
+					</div>
 				</article>
 				<header class="sizer-secondary">
 					<p class="footnote">${blockData.title}</p>
@@ -238,9 +242,11 @@ let renderBlock = (blockData) => {
 						<p class="footnote">${blockData.title}</p>
 					</header>
 					<article class="sizer-primary vid">
-						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
-							<img src="${thumb}" alt="${blockData.title}" loading="lazy">
-						</a>
+						<div class="masked">
+							<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
+								<img src="${thumb}" alt="${blockData.title}" loading="lazy">
+							</a>
+						</div>
 					</article>
 					<header class="sizer-secondary">
 						<p class="footnote">${blockData.title}</p>
