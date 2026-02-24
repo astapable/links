@@ -13,7 +13,8 @@ let placeChannelInfo = (channelData) => {
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = channelData.title
-	channelDescription.innerHTML = channelData.description.html
+	// channelDescription.innerHTML = channelData.description.html
+	channelDescription.innerHTML = channelData.description.plain
 	// channelCount.innerHTML = channelData.counts.blocks
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
@@ -280,7 +281,7 @@ let renderUser = (userData) => {
 	let userAddress =
 		`
 		<address>
-			<img src="${ userData.avatar }">
+			<p></p>
 			<h3>${ userData.name }</h3>
 			<p><a href="https://are.na/${ userData.slug }">Are.na profile ↗</a></p>
 		</address>
@@ -397,20 +398,36 @@ listWrappers.forEach(el => observer.observe(el))
 
 // INTERSECTION OBSERVER for .nav.bottom
 // Follow .hero section
+// const heroTrigger = document.querySelector('.hero');
+
+// if (heroTrigger) {
+// 	const navObserver = new IntersectionObserver(
+// 		([entry]) => {
+// 			const showNav = entry.intersectionRatio < 0.8; 
+// 			document.documentElement.classList.toggle('nav-visible', showNav); // When I scroll 20% of .hero appear
+// 		},
+// 			{threshold: [0.8] } // Use callbak on 80% of .hero appear when back
+// 	);
+
+// 	navObserver.observe(heroTrigger);
+// }
+
 const heroTrigger = document.querySelector('.hero');
 
 if (heroTrigger) {
 	const navObserver = new IntersectionObserver(
 		([entry]) => {
-			const showNav = entry.intersectionRatio < 0.8; 
-			document.documentElement.classList.toggle('nav-visible', showNav); // When I scroll 20% of .hero appear
-		},
-			{threshold: [0.8] } // Use callbak on 80% of .hero appear when back
-	);
+		document.documentElement.classList.toggle('nav-visible', !entry.isIntersecting);
+    },
+    {
+    	threshold: 0,
+    	// Trigger on 60% viewport top
+    	rootMargin: "-60% 0px 0px 0px",
+    }
+  );
 
-	navObserver.observe(heroTrigger);
+  navObserver.observe(heroTrigger);
 }
-
 
 // SCROLL DIRECTION CHECKER. Checks scroll direction 
 let previousScroll = window.scrollY; // Sows how much has already been scrolled on the page
@@ -418,7 +435,7 @@ let previousScroll = window.scrollY; // Sows how much has already been scrolled 
 function updateScrollDir() {
 	const y = window.scrollY;
 
-	if (y === previousScroll) return; // <- важно
+	if (y === previousScroll) return;
 
 	let dir;
 
@@ -437,76 +454,55 @@ function updateScrollDir() {
 
 
 // https://www.youtube.com/watch?v=1lUKqISgRH0
-const canvas = document.querySelector('#draw');
-const ctx = canvas.getContext('2d')
+// const canvas = document.querySelector('#draw');
+// const ctx = canvas.getContext('2d')
 
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
 
-ctx.strokeStyle = '#bada55';
-ctx.lineJoin = 'round';
-ctx.lineCap = 'round';
-ctx.lineWidth = 100;
+// ctx.strokeStyle = '#bada55';
+// ctx.lineJoin = 'round';
+// ctx.lineCap = 'round';
+// ctx.lineWidth = 100;
 
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
-let hue = 0;
-let direction = true;
+// let isDrawing = false;
+// let lastX = 0;
+// let lastY = 0;
+// let hue = 0;
+// let direction = true;
 
-function draw(e) {
-	if(!isDrawing) return;
-	ctx.strokeStyle = `hsl(${hue}, 100%, 50:)`;
-	ctx.beginPath();
-	ctx.moveTo(lastX, lastY);
-	ctx.lineTo(e.offsetX, e.offsetY);
-	ctx.stroke();
-	[lastX, lastY] = [e.offsetX, e.offsetY];
+// function draw(e) {
+// 	if(!isDrawing) return;
+// 	ctx.strokeStyle = `hsl(${hue}, 100%, 50:)`;
+// 	ctx.beginPath();
+// 	ctx.moveTo(lastX, lastY);
+// 	ctx.lineTo(e.offsetX, e.offsetY);
+// 	ctx.stroke();
+// 	[lastX, lastY] = [e.offsetX, e.offsetY];
 
-	hue++;
-	if (hue >= 360) {
-		hue = 0;
-	}
-}
+// 	hue++;
+// 	if (hue >= 360) {
+// 		hue = 0;
+// 	}
+// }
 
-function clearCanvas() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+// function clearCanvas() {
+// 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+// }
 
-canvas.addEventListener('mousedown', (e) => {
-	isDrawing = true;
-	[lastX, lastY] = [e.offsetX, e.offsetY];
-});
+// canvas.addEventListener('mousedown', (e) => {
+// 	isDrawing = true;
+// 	[lastX, lastY] = [e.offsetX, e.offsetY];
+// });
 
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', () => {
-	isDrawing = false;
-	clearCanvas();
-});
+// canvas.addEventListener('mousemove', draw);
+// canvas.addEventListener('mouseup', () => {
+// 	isDrawing = false;
+// 	clearCanvas();
+// });
 
-canvas.addEventListener('mouseout', () => {
-	isDrawing = false;
-	clearCanvas();
-});
-
-
-const bg = document.querySelector(".back");
-let latestY = 0;
-let ticking = false;
-
-// скорость параллакса: 0.1–0.25 обычно ок
-const speed = 0.04;
-
-function update() {
-  bg.style.transform = `translateY(${latestY * speed}px)`;
-  ticking = false;
-}
-
-window.addEventListener("scroll", () => {
-  latestY = window.scrollY;
-  if (!ticking) {
-    requestAnimationFrame(update);
-    ticking = true;
-  }
-}, { passive: true });
+// canvas.addEventListener('mouseout', () => {
+// 	isDrawing = false;
+// 	clearCanvas();
+// });

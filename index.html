@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Links</title>
+		<title>Typography & Interaction Project 4 - Links</title>
+        <meta name="description" content="A curated collection of murals in New York City as moments of public expression focusing on the images, artists, history and places that shape them. These blocks document how murals function as as a way to reflect politics, neighborhoods, culture and change across the city.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             @import 'reset.css' layer(reset);
@@ -15,12 +16,12 @@
                 <p>Check Portfolio</p>
                 <img class="icon" src="img/portfolio.svg" alt="">
             </a>
-            <h1>
+            <!-- <h1>
                 <a href="/index.html">
                     <span class="website-h1-text">Murals in New York City</span>
                     <img class="logo" src="img/logo.svg" alt="Murals in New York City" aria-hidden="true">
                 </a>
-            </h1>
+            </h1> -->
             <a id="channel-link" class="btn" target="_blank">
                 <p>Are.na channel</p>
                 <img class="icon" src="img/arena-logo.svg" alt="">
@@ -92,12 +93,14 @@
 		<main>
             <!-- Marker for Observer -->
             <div id="nav-trigger" aria-hidden="true"></div>
-            <canvas id="draw"></canvas>
-            <img class="back" src="img/back.jpg" alt="">
+            <!-- <canvas id="draw"></canvas> -->
             <header class="hero">
+                <h1>
+                    <span id="channel-title" class="website-h1-text"></span>
+                    <img class="logo" src="img/large-logo.svg" alt="Murals in New York City" aria-hidden="true">
+                </h1>
                 <hgroup>
-                    <h2 id="channel-title"></h2>
-                    <p id="channel-description"></p>
+                    <h2 id="channel-description"></h2>
                 </hgroup>
             </header>
             <section>
@@ -106,8 +109,9 @@
                 </ul>
             </section>
         </main>
-		<!-- <footer>
-		    <p>Later</p>
-		</footer> -->
+		<footer id="channel-users">
+            <p>Meet Your Authors</p>
+            <h3></h3>
+		</footer>
 	</body>
 </html>

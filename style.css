@@ -15,6 +15,22 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Anton";
+    src: url("fonts/Anton-Regular.woff") format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pershotravneva55";
+    src: url("fonts/Pershotravneva55.woff") format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     font-family: "DM_Mono";
     font-weight: 400;
@@ -22,7 +38,7 @@
     scroll-behavior: smooth;
     color: var(--white);
     /* background-color: var(--blue-gray); */
-    background-color: #2B708E;
+    background-color: var(--black);
 
     /* ------------- PRIMARY COLORS ------------- */
     --black: #2C2C2C;
@@ -118,6 +134,8 @@ body::before {
     mix-blend-mode: normal;
 }
 
+html, body { overflow-x: hidden; }
+
 /* ------------- FONT STYLING ------------- */
 .website-h1-text {
     position: absolute;
@@ -125,14 +143,6 @@ body::before {
     clip: rect(0,0,0,0);
     white-space: nowrap;
     border: 0;
-}
-
-h2 {
-    font-weight: 500;
-    font-size: var(--h2-title); 
-    letter-spacing: -0.015rem;
-    text-transform: uppercase;
-    text-wrap: balance;
 }
 
 p {
@@ -149,7 +159,7 @@ p {
 /* ------------- GENERIC ------------- */
 main {
     position: relative;
-    padding: var(--pad-medium);
+    /* padding: var(--pad-medium); */
     width: 100%;
 
     #nav-trigger{
@@ -171,7 +181,9 @@ ul {
     display: flex;
     flex-direction: column;
     gap: var(--gap-medium);
-    width: 100%;
+    padding: var(--pad-medium);
+    /* width: 100%; */
+    z-index: 1; /* To overflow back svg */
 }
 
 #channel-blocks {
@@ -328,36 +340,50 @@ nav {
 
 /* ------------- HERO SECTION ------------- */
 .hero {
-    padding-block-start: 20svh;
-    height: 80svh;
+    /* padding-block-start: 20svh; */
+    margin-block-start: 10svh;
+    position: relative;
+    padding: var(--pad-medium);
+
+    /* height: 80svh; */
+    /* height: 100svh; */
+
 
     @media (width > 1000px) {
-        padding-block-start: 10svh;
-        height: 90svh;
+        /* padding-block-start: 10svh; */
+        margin-block-start: 0;
+        /* height: 90svh; */
+        /* height: 100svh; */
     }
 
     hgroup {
+        z-index: 1; /* To overflow back svg */
         display: flex;
         flex-direction: column;
-        align-items: left;
-        width: 70%;
         gap: var(--gap-medium);
-        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
         
         @media (width > 600px) {
-            width: 80%;
+            /* width: 80%; */
+            width: 100%;
         }
         
         @media (width > 800px) {
-            width: 60%;
+            /* width: 60%; */
+            width: 100%;
         }
         
         @media (width > 1000px) {
-            width: 50%;
+            /* width: 50%; */
+            width: 100%;
         }
         
         @media (width > 1200px) {
-            width: 40%;
+            /* width: 40%; */
+            width: 100%;
         }
     }
 }
@@ -523,29 +549,93 @@ html.nav-visible nav.bottom {
         visibility 0s;
 }
 
-
-
-
-
-.back{
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 120%;
-  object-fit: cover;
-  z-index: -1;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  will-change: transform, filter;
-}
-
-
-canvas {
+/* canvas {
     position: absolute;
     height: 100vh;
     width: 100%;
     left: 0;
     top: 0;
+} */
+
+.hero h1 {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 125%;
+    height: 125%;
+    z-index: -1;
+    pointer-events: none;
+    margin-block: -2rem;
+    filter: blur(5px);
+}
+
+h2 { 
+    font-family: "Anton";
+    font-weight: 400;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    width: 80%;
+    line-height: 95%;
+    text-wrap: balance;
+    text-align: center;
+
+    @media (width > 450px) {
+        font-size: 2.25rem;
+        width: 80%;
+    }
+
+    @media (width > 600px) {
+        font-size: 3.25rem;
+        width: 80%;
+    }
+        
+    @media (width > 800px) {
+        font-size: 4.25rem;
+        width: 80%;
+    }
+
+    @media (width > 900px) {
+        font-size: 4rem;
+        width: 70%;
+    }
+        
+       @media (width > 1000px) {
+        font-size: 4.25rem;
+        width: 70%;
+    }
+        
+    @media (width > 1200px) {
+        font-size: 6.25rem;
+        width: 60%;
+    }
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100svh;
+    align-items: center;
+}
+
+h3 { 
+    font-family: "Anton";
+    font-weight: 400;
+    font-size: 6.25rem;
+    text-transform: uppercase;
+    width: 80%;
+    line-height: 95%;
+    text-wrap: balance;
+    text-align: center;
+}
+
+address {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 
