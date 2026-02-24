@@ -115,7 +115,9 @@ let renderBlock = (blockData) => {
                 <p class="footnote">${ blockData.title }</p>
             </header>
             <article class="sizer-primary img">
-                <img src="${blockData.image.medium.src_2x}" alt="">
+				<div class="masked">
+					<img src="${blockData.image.medium.src_2x}" alt="">
+                </div>
             </article>
             <header class="sizer-secondary">
             	<p class="footnote">${ blockData.title }</p>
