@@ -93,6 +93,8 @@ let renderBlock = (blockData) => {
 				<p class="footnote">${ blockData.title }</p>
 			</header>
 			<article class="sizer-primary img">
+				<img class="other-marker-3" src="assets/blob-blue.svg" alt="" aria-hidden="true">
+				<img class="other-marker-4" src="assets/blob-black.svg" alt="" aria-hidden="true">
 				<div class="masked">
 					<a href="${ blockData.source.url }" target="_blank">
 						<img src="${ blockData.image.medium.src_2x }" alt="">
@@ -117,6 +119,8 @@ let renderBlock = (blockData) => {
                 <p class="footnote">${ blockData.title }</p>
             </header>
             <article class="sizer-primary img">
+				<img class="other-marker-1" src="assets/blob-gray.svg" alt="" aria-hidden="true">
+				<img class="other-marker-2" src="assets/blob-orange.svg" alt="" aria-hidden="true">
 				<div class="masked">
 					<img src="${blockData.image.medium.src_2x}" alt="">
                 </div>
@@ -131,22 +135,39 @@ let renderBlock = (blockData) => {
 	}
 
 	// Text!
-	else if (blockData.type == 'Text') {
-		let textItem =
-		`
-		<li class="list-item" data-category="text">
-			<header class="sizer-secondary">
-				<p class="footnote">${ blockData.title }</p>
-			</header>
-			<article class="sizer-primary txt">
-				<p>${blockData.content.plain}</p>
-				<p class="footnote">${ blockData.description.plain }</p>
-			</article>
-            <header class="sizer-secondary">
-                <p class="footnote">${ blockData.title }</p>
-             </header>
-        </li>
-		`
+	// else if (blockData.type == 'Text') {
+	// 	let textItem =
+	// 	`
+	// 	<li class="list-item" data-category="text">
+	// 		<header class="sizer-secondary">
+	// 			<p class="footnote">${ blockData.title }</p>
+	// 		</header>
+	// 		<article class="sizer-primary txt">
+	// 			<p>${blockData.content.plain}</p>
+	// 			<p class="footnote">${ blockData.description.plain }</p>
+	// 		</article>
+    //         <header class="sizer-secondary">
+    //             <p class="footnote">${ blockData.title }</p>
+    //          </header>
+    //     </li>
+	// 	`
+
+	// 	channelBlocks.insertAdjacentHTML('beforeend', textItem)
+	// }
+
+		else if (blockData.type == 'Text') {
+			let textItem =
+			`
+			<li class="list-item" data-category="text">
+				<header class="sizer-secondary">
+					<p class="footnote">${ blockData.title }</p>
+				</header>
+				<article class="sizer-primary text text-marker"></article>
+				<header class="sizer-secondary">
+					<p class="footnote">${ blockData.title }</p>
+				</header>
+			</li>
+			`
 
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
@@ -166,6 +187,7 @@ let renderBlock = (blockData) => {
 					<p class="footnote">${blockData.title}</p>
 				</header>
 				<article class="sizer-primary vid">
+					<img class="video-marker" src="assets/video-marker.svg" alt="" aria-hidden="true">
 					<div class="masked">
 						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
 							<img src="${thumb}" alt="${blockData.title}" loading="lazy">
@@ -192,9 +214,12 @@ let renderBlock = (blockData) => {
 					<p class="footnote">${blockData.title}</p>
 				</header>
 				<article class="sizer-primary doc">
-					<a class="media-link" href="${pdfHref}" target="_blank" rel="noopener noreferrer">
-						${imageSrc ? `<img src="${imageSrc}" alt="${blockData.title}" loading="lazy">` : ``}
-					</a>
+					<img class="pdf-marker" src="assets/read-marker.svg" alt="" aria-hidden="true">
+					<div class="masked">
+						<a class="media-link" href="${pdfHref}" target="_blank" rel="noopener noreferrer">
+							${imageSrc ? `<img src="${imageSrc}" alt="${blockData.title}" loading="lazy">` : ``}
+						</a>
+					</div>
 				</article>
 				<header class="sizer-secondary">
 					<p class="footnote">${blockData.title}</p>
@@ -206,17 +231,35 @@ let renderBlock = (blockData) => {
 		}
 
 		// Uploaded audio!
-		else if (contentType.includes('audio')) {
+	// 	else if (contentType.includes('audio')) {
+	// 		let audioItem =
+	// 			`
+	// 			<li class="list-item" data-category="audio">
+    //                 <header class="sizer-secondary">
+    //                     <p class="footnote">${ blockData.title }</p>
+    //                 </header>
+    //                 <article class="sizer-primary aud">
+    //                     <audio controls src="${ blockData.attachment.url }"></audio>
+    //                     <p class="footnote">${ blockData.description.plain }</p>
+    //                 </article>
+    //                 <header class="sizer-secondary">
+    //                     <p class="footnote">${ blockData.title }</p>
+    //                 </header>
+    //             </li>
+	// 			`
+
+	// 		channelBlocks.insertAdjacentHTML('beforeend', audioItem)
+	// 	}
+	// }
+
+			else if (contentType.includes('audio')) {
 			let audioItem =
 				`
 				<li class="list-item" data-category="audio">
                     <header class="sizer-secondary">
                         <p class="footnote">${ blockData.title }</p>
                     </header>
-                    <article class="sizer-primary aud">
-                        <audio controls src="${ blockData.attachment.url }"></audio>
-                        <p class="footnote">${ blockData.description.plain }</p>
-                    </article>
+					<article class="sizer-primary img audio-marker"></article>
                     <header class="sizer-secondary">
                         <p class="footnote">${ blockData.title }</p>
                     </header>
@@ -242,6 +285,7 @@ let renderBlock = (blockData) => {
 						<p class="footnote">${blockData.title}</p>
 					</header>
 					<article class="sizer-primary vid">
+						<img class="video-marker" src="assets/video-marker.svg" alt="" aria-hidden="true">
 						<div class="masked">
 							<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
 								<img src="${thumb}" alt="${blockData.title}" loading="lazy">
@@ -258,6 +302,26 @@ let renderBlock = (blockData) => {
 		}
 
 		// Linked audio!
+		// else if (embedType.includes('rich')) {
+		// 	let linkedAudioItem =
+		// 		`
+		// 		<li class="list-item" data-category="audio">
+        //             <header class="sizer-secondary">
+        //                 <p class="footnote">${ blockData.title }</p>
+        //             </header>
+        //             <article class="sizer-primary aud">
+        //                 <a href="${ blockData.source.url }"></a>
+        //                 <p class="footnote">${ blockData.description.plain }</p>
+        //             </article>
+        //             <header class="sizer-secondary">
+        //                 <p class="footnote">${ blockData.title }</p>
+        //             </header>
+        //         </li>
+		// 		`
+
+		// 	channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
+		// }
+
 		else if (embedType.includes('rich')) {
 			let linkedAudioItem =
 				`
@@ -265,10 +329,7 @@ let renderBlock = (blockData) => {
                     <header class="sizer-secondary">
                         <p class="footnote">${ blockData.title }</p>
                     </header>
-                    <article class="sizer-primary aud">
-                        <a href="${ blockData.source.url }"></a>
-                        <p class="footnote">${ blockData.description.plain }</p>
-                    </article>
+					<article class="sizer-primary img audio-marker"></article>
                     <header class="sizer-secondary">
                         <p class="footnote">${ blockData.title }</p>
                     </header>
