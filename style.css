@@ -155,15 +155,21 @@ p {
 
 .hero h1 {
     position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 125%;
-    height: 125%;
+    top: 0;
+    width: 115%;
+    height: 100%;
     z-index: -1;
     pointer-events: none;
     margin-block: -2rem;
     filter: blur(5px);
+
+    @media (width > 900px) {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 125%;
+        height: 125%;
+    }
 }
 
 h2 { 
