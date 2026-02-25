@@ -375,7 +375,7 @@ nav {
             width: auto;
 
             @media (width > 600px) {
-                gap: 0.25rem;
+                gap: 0rem;
             }
 
             .filter-btn {
@@ -395,7 +395,7 @@ nav {
                     padding-block: var(--pad-fltr-btn-block);
                     padding-inline: var(--pad-fltr-btn-inline);
                     width: auto;
-                    height: 100%;
+                    height: auto;
                 }
 
                 .icon path {
