@@ -165,7 +165,6 @@ p {
     pointer-events: none;
     margin-block: -2rem;
     filter: blur(5px);
-    margin-block-end: 2rem;
 
 
     @media (width > 800px) {
@@ -457,7 +456,6 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: var(--pad-medium);
-    margin-block-start: 2rem;
 
     header {
         display: flex;
@@ -600,23 +598,6 @@ footer {
     }
 }
 
-.list-item:nth-child(13n + 1) .sizer-primary { margin-left: -10%; margin-right: auto; }
-.list-item:nth-child(13n + 4) .sizer-primary { margin-left: -6%;  margin-right: auto; }
-.list-item:nth-child(13n + 7) .sizer-primary { margin-left: -3%;  margin-right: auto; }
-.list-item:nth-child(13n + 10) .sizer-primary{ margin-left: -8%;  margin-right: auto; }
-
-/* ---------- CENTER (чуть хаоса вокруг центра) ---------- */
-.list-item:nth-child(13n + 2) .sizer-primary { margin-left: auto;  margin-right: auto; }
-.list-item:nth-child(13n + 5) .sizer-primary { margin-left: auto;  margin-right: auto; margin-left: 2%; }
-.list-item:nth-child(13n + 8) .sizer-primary { margin-left: auto;  margin-right: auto; margin-right: 2%; }
-.list-item:nth-child(13n + 11) .sizer-primary{ margin-left: auto;  margin-right: auto; margin-left: 1%; }
-
-/* ---------- RIGHT (разные сдвиги) ---------- */
-.list-item:nth-child(13n + 3) .sizer-primary { margin-left: auto;  margin-right: -9%; }
-.list-item:nth-child(13n + 6) .sizer-primary { margin-left: auto;  margin-right: -5%; }
-.list-item:nth-child(13n + 9) .sizer-primary { margin-left: auto;  margin-right: -3%; }
-.list-item:nth-child(13n + 12) .sizer-primary{ margin-left: auto;  margin-right: -7%; }
-
 /* ------------- CMS SYSTEM STYLES -------------*/
 .list-item {
     display: flex;
@@ -646,10 +627,10 @@ footer {
         &:nth-child(13n + 12) .sizer-primary{ margin-inline-start: auto;  margin-inline-end: -7%; }
 
     .sizer-primary {
-        width: 70%;
+        width: 85%;
 
         @media (width > 600px) { 
-            width: 65%;
+            width: 75%;
         }
 
         @media (width > 1000px) { 
