@@ -21,7 +21,7 @@ let placeChannelInfo = (channelData) => {
 
 
 
-// ADDITION. Func setup for making thumbs for pdf and videos
+// ADDITION. Func setup for making thumbs for pdf and videos (uploaded)
 // Picking are.na img for covers
 function pickArenaImage(blockData) {
 	return (
@@ -56,7 +56,7 @@ function getYouTubeId(url = "") {
   	}
 }
 
-// Building thumbnail based on the url
+// Building thumbnail based on the url for youtube
 function getYouTubeThumbnailUrl(videoId, quality = "hqdefault") {
 	return `https://i.ytimg.com/vi/${videoId}/${quality}.jpg`;
 }
@@ -113,7 +113,9 @@ let renderBlock = (blockData) => {
 				<img class="other-marker-1" src="assets/blob-gray.svg" alt="" aria-hidden="true">
 				<img class="other-marker-2" src="assets/blob-orange.svg" alt="" aria-hidden="true">
 				<div class="masked">
-					<img src="${blockData.image.medium.src_2x}" alt="">
+					<a href="https://www.are.na/block/${blockData.id}" target="_blank">
+						<img src="${blockData.image.medium.src_2x}" alt="">
+					</a>
                 </div>
             </article>
         </li>
@@ -123,31 +125,15 @@ let renderBlock = (blockData) => {
 	}
 
 	// Text!
-	// else if (blockData.type == 'Text') {
-	// 	let textItem =
-	// 	`
-	// 	<li class="list-item" data-category="text">
-	// 		<header class="sizer-secondary">
-	// 			<p class="footnote">${ blockData.title }</p>
-	// 		</header>
-	// 		<article class="sizer-primary txt">
-	// 			<p>${blockData.content.plain}</p>
-	// 			<p class="footnote">${ blockData.description.plain }</p>
-	// 		</article>
-    //         <header class="sizer-secondary">
-    //             <p class="footnote">${ blockData.title }</p>
-    //          </header>
-    //     </li>
-	// 	`
-
-	// 	channelBlocks.insertAdjacentHTML('beforeend', textItem)
-	// }
-
-		else if (blockData.type == 'Text') {
+	else if (blockData.type == 'Text') {
 			let textItem =
 			`
 			<li class="list-item" data-category="text">
-				<article class="sizer-primary text text-marker"></article>
+				<article class="sizer-primary text text-marker">
+					<a href="https://www.are.na/block/${blockData.id}" target="_blank">
+						<button></button>
+					</a>
+				</article>
 			</li>
 			`
 
@@ -168,7 +154,7 @@ let renderBlock = (blockData) => {
 				<article class="sizer-primary vid">
 					<img class="video-marker" src="assets/video-marker.svg" alt="" aria-hidden="true">
 					<div class="masked">
-						<a class="media-link" href="${href}" target="_blank" rel="noopener noreferrer">
+						<a class="media-link" href="${href}" target="_blank">
 							<img src="${thumb}" alt="${blockData.title}" loading="lazy">
 						</a>
 					</div>
@@ -201,32 +187,15 @@ let renderBlock = (blockData) => {
 		}
 
 		// Uploaded audio!
-	// 	else if (contentType.includes('audio')) {
-	// 		let audioItem =
-	// 			`
-	// 			<li class="list-item" data-category="audio">
-    //                 <header class="sizer-secondary">
-    //                     <p class="footnote">${ blockData.title }</p>
-    //                 </header>
-    //                 <article class="sizer-primary aud">
-    //                     <audio controls src="${ blockData.attachment.url }"></audio>
-    //                     <p class="footnote">${ blockData.description.plain }</p>
-    //                 </article>
-    //                 <header class="sizer-secondary">
-    //                     <p class="footnote">${ blockData.title }</p>
-    //                 </header>
-    //             </li>
-	// 			`
-
-	// 		channelBlocks.insertAdjacentHTML('beforeend', audioItem)
-	// 	}
-	// }
-
 			else if (contentType.includes('audio')) {
 			let audioItem =
 				`
 				<li class="list-item" data-category="audio">
-					<article class="sizer-primary img audio-marker"></article>
+					<article class="sizer-primary img audio-marker">
+						<a href="https://www.are.na/block/${blockData.id}" target="_blank">
+							<button></button>
+						</a>
+					</article>
                 </li>
 				`
 
@@ -259,32 +228,15 @@ let renderBlock = (blockData) => {
 			channelBlocks.insertAdjacentHTML("beforeend", linkedVideoItem);
 		}
 
-		// Linked audio!
-		// else if (embedType.includes('rich')) {
-		// 	let linkedAudioItem =
-		// 		`
-		// 		<li class="list-item" data-category="audio">
-        //             <header class="sizer-secondary">
-        //                 <p class="footnote">${ blockData.title }</p>
-        //             </header>
-        //             <article class="sizer-primary aud">
-        //                 <a href="${ blockData.source.url }"></a>
-        //                 <p class="footnote">${ blockData.description.plain }</p>
-        //             </article>
-        //             <header class="sizer-secondary">
-        //                 <p class="footnote">${ blockData.title }</p>
-        //             </header>
-        //         </li>
-		// 		`
-
-		// 	channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
-		// }
-
 		else if (embedType.includes('rich')) {
 			let linkedAudioItem =
 				`
 				<li class="list-item" data-category="audio">
-					<article class="sizer-primary img audio-marker"></article>
+					<article class="sizer-primary img audio-marker">
+						<a href="https://www.are.na/block/${blockData.id}" target="_blank">
+							<button></button>
+						</a>
+					</article>
                 </li>
 				`
 

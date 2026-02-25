@@ -156,28 +156,50 @@ p {
 .hero h1 {
     position: fixed;
     top: 0;
-    width: 115%;
-    height: 100%;
+    width: 125%;
+    height: 125%;
     z-index: -1;
     pointer-events: none;
     margin-block: -2rem;
     filter: blur(5px);
 
-    @media (width > 900px) {
+
+    @media (width > 800px) {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: 125%;
-        height: 125%;
+        width: 130%;
+        height: 130%;
+    }
+}
+
+.hero-h1 {
+    display: block;
+    width: 100%;
+}
+
+.desktop-logo {
+    display: none;
+
+    @media (width > 800px) {
+        display: block;
+    }
+}
+
+.mobile-logo {
+    display: block;
+
+    @media (width > 800px) {
+        display: none;;
     }
 }
 
 h2 { 
     font-family: "Anton";
     font-weight: 400;
-    font-size: 1.55rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
-    width: 90%;
+    width: 100%;
     line-height: 110%;
     text-wrap: balance;
     text-align: center;
@@ -224,6 +246,8 @@ h2 {
 main {
     position: relative;
     width: 100%;
+    overflow: hidden;
+
 
     #nav-trigger{
         pointer-events: none;
@@ -245,17 +269,21 @@ section { padding: var(--pad-medium); }
 ul {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-medium);
+    gap: 4rem;
 
+    @media (width > 800px) {
+        gap: 6rem;
+    }
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
 
 #channel-blocks {
     justify-content: center;
-    width: 100%;
-}
-
-.hero-h1 {
-    display: block;
     width: 100%;
 }
 
@@ -560,9 +588,8 @@ footer {
 /* ------------- CMS SYSTEM STYLES -------------*/
 .list-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     gap: var(--gap-medium);
 
@@ -589,24 +616,6 @@ footer {
             }
         }
 
-        /* TEXT */
-        &.txt {
-            display: flex;
-            flex-direction: column;
-            padding: var(--pad-large);
-            background-color: var(--white);
-            color: var(--black);
-            gap: var(--gap-xlarge);
-
-            p { text-transform: none; }
-
-            p:nth-of-type(2){
-                align-self: flex-end;
-                text-transform: uppercase;
-                color: var(--gray);
-            }
-        }
-
         /* AUDIO */
         &.aud {
             display: flex;
@@ -629,20 +638,6 @@ footer {
                 block-size: revert;
             }
         }
-
-        /* PDF */
-        /* &.doc {
-            height: 95svh;
-            overflow: hidden;
-            position: relative;
-
-            iframe {
-                width: 100%;
-                height: 100%;
-                display: block;
-                border: 0;
-            }
-        } */
 
         /* VIDEO */
         &.vid {
@@ -670,9 +665,6 @@ footer {
             width: 18%;
             text-wrap: balance;
         }
-
-        &:first-of-type { text-align: left; }
-        &:last-of-type  { text-align: right; }
     }
 }
 
@@ -872,3 +864,4 @@ li[data-category="link"]:nth-child(even) .other-marker-4 {
     transform: translate(30%, -10%);
     width: 45%;
 }
+
