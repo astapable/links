@@ -13,9 +13,9 @@ let placeChannelInfo = (channelData) => {
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = channelData.title
-	// channelDescription.innerHTML = channelData.description.html
+	// channelDescription.innerHTML = channelData.description.html - this did not allow me to costumize typo
 	channelDescription.innerHTML = channelData.description.plain
-	// channelCount.innerHTML = channelData.counts.blocks
+	// channelCount.innerHTML = channelData.counts.blocks - NOT USING
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
 
@@ -126,16 +126,16 @@ let renderBlock = (blockData) => {
 
 	// Text!
 	else if (blockData.type == 'Text') {
-			let textItem =
-			`
-			<li class="list-item" data-category="text">
-				<article class="sizer-primary text text-marker">
-					<a href="https://www.are.na/block/${blockData.id}" target="_blank">
-						<button></button>
-					</a>
-				</article>
-			</li>
-			`
+		let textItem =
+		`
+		<li class="list-item" data-category="text">
+			<article class="sizer-primary text text-marker">
+				<a href="https://www.are.na/block/${blockData.id}" target="_blank">
+					<button></button>
+				</a>
+			</article>
+		</li>
+		`
 
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
@@ -272,11 +272,6 @@ let fetchJson = (url, callback) => {
 		.then((json) => callback(json))
 }
 
-// More on `fetch`:
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch
-
-
-
 // Now that we have said all the things we *can* do, go get the channel data:
 fetchJson(`https://api.are.na/v3/channels/${channelSlug}`, (json) => {
 	console.log(json) // Always good to check your response!
@@ -306,186 +301,3 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 	// 02. Later when the .list-item enters viewport the callback triggers and it adds the .show class from line 350
 	document.querySelectorAll('.sizer-primary').forEach(el => observer.observe(el))
 })
-
-
-
-// FILTERING
-// SOURCE: https://stackoverflow.com/questions/69229348/filter-html-elements-vanilla-js
-// const since the element won't be changed.
-const filterMenu = document.querySelector('#filter-menu');
-
-// Set .active to "All" filter on page load (this add the style only but not filter it yet)
-if (filterMenu) {
-	const defaultBtn = document.querySelector('.filter-btn[data-category="all"]');
-	if (defaultBtn) defaultBtn.classList.add('active');
-
-	// Here what makes actually filter happens on page load for "All"
-	document.querySelectorAll('.list-item').forEach((item) => {
-		item.style.display = 'flex';
-	});
-
-	// Set where .active happens
-	filterMenu.addEventListener('click', (e) => {
-		const buttonClicked = e.target.closest('.filter-btn');
-		if (!buttonClicked) return;
-
-		// Denote that we need data-category
-		const category = buttonClicked.dataset.category;
-
-		// Set adding the .active on click. 
-		document.querySelectorAll('.filter-btn').forEach((filterButton) => {
-			filterButton.classList.remove('active'); // it takes .filter-btn, finds all the sub classes added to that class and removes the specific one - .active
-		});
-		buttonClicked.classList.add('active');
-
-		// Filtering happens here. Basically show/hide type of interaction
-		const lsitItems = document.querySelectorAll('.list-item');
-
-		lsitItems.forEach((item) => {
-			if (category === 'all' || item.dataset.category === category) {
-				item.style.display = 'flex';
-			} else {
-				item.style.display = 'none';
-			}
-		});
-	});
-}
-
-
-// INTERSECTION OBSERVER
-// 01. ADDITION - INTERSECTION OBSERVER. This wasnt working until I connected Intersection Observer to the fetch process. 
-// 02. Before that .list-item did not appear in the DOM. Line 296
-const observer = new IntersectionObserver ((entries)=>{
-	entries.forEach((entry)=>{
-		if(entry.isIntersecting){
-			console.log(entry.target)
-			entry.target.classList.add ('show')	
-		} else {
-			entry.target.classList.remove ('show')
-		}
-	})
-}, {})
-
-const listWrappers = document.querySelectorAll('.sizer-primary'); 
-listWrappers.forEach(el => observer.observe(el))
-
-// INTERSECTION OBSERVER for .nav.bottom
-// Follow .hero and .footer sections
-const heroTrigger = document.querySelector('.hero');
-const footerTrigger = document.querySelector('footer');
-
-let heroOut = false;
-let footerIn = false;
-
-function updateNav() {
-  // нав показываем только если hero уже не виден и футер НЕ виден
-	document.documentElement.classList.toggle('nav-visible', heroOut && !footerIn);
-}
-
-if (heroTrigger) {
-	const heroObserver = new IntersectionObserver(
-		([entry]) => {
-			heroOut = !entry.isIntersecting;
-			updateNav();
-		},
-		{
-    		threshold: 0,
-    		rootMargin: "-60% 0% 0% 0%",
-    	}
-  	);
-
-	heroObserver.observe(heroTrigger);
-}
-
-if (footerTrigger) {
-	const footerObserver = new IntersectionObserver(
-		([entry]) => {
-			footerIn = entry.isIntersecting;
-			updateNav();
-		},
-		{
-    		threshold: 0,
-    		rootMargin: "0% 0% 0% 0%",
-    	}
-  	);
-
-	footerObserver.observe(footerTrigger);
-}
-
-// SCROLL DIRECTION CHECKER. Checks scroll direction 
-let previousScroll = window.scrollY; // Sows how much has already been scrolled on the page
-
-function updateScrollDir() {
-	const y = window.scrollY;
-
-	if (y === previousScroll) return;
-
-	let dir;
-
-	if (y > previousScroll) {
-		dir = 'down';
-	} else {
-		dir = 'up';
-	}
-
-	// Set the data-scroll-dir attribute on <html>
-	document.documentElement.setAttribute('data-scroll-dir', dir);
-
-	previousScroll = y;
-}
-
-
-
-// https://www.youtube.com/watch?v=1lUKqISgRH0
-// const canvas = document.querySelector('#draw');
-// const ctx = canvas.getContext('2d')
-
-
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-
-// ctx.strokeStyle = '#bada55';
-// ctx.lineJoin = 'round';
-// ctx.lineCap = 'round';
-// ctx.lineWidth = 100;
-
-// let isDrawing = false;
-// let lastX = 0;
-// let lastY = 0;
-// let hue = 0;
-// let direction = true;
-
-// function draw(e) {
-// 	if(!isDrawing) return;
-// 	ctx.strokeStyle = `hsl(${hue}, 100%, 50:)`;
-// 	ctx.beginPath();
-// 	ctx.moveTo(lastX, lastY);
-// 	ctx.lineTo(e.offsetX, e.offsetY);
-// 	ctx.stroke();
-// 	[lastX, lastY] = [e.offsetX, e.offsetY];
-
-// 	hue++;
-// 	if (hue >= 360) {
-// 		hue = 0;
-// 	}
-// }
-
-// function clearCanvas() {
-// 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-// }
-
-// canvas.addEventListener('mousedown', (e) => {
-// 	isDrawing = true;
-// 	[lastX, lastY] = [e.offsetX, e.offsetY];
-// });
-
-// canvas.addEventListener('mousemove', draw);
-// canvas.addEventListener('mouseup', () => {
-// 	isDrawing = false;
-// 	clearCanvas();
-// });
-
-// canvas.addEventListener('mouseout', () => {
-// 	isDrawing = false;
-// 	clearCanvas();
-// });

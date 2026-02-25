@@ -166,7 +166,6 @@ p {
     margin-block: -2rem;
     filter: blur(5px);
 
-
     @media (width > 800px) {
         left: 50%;
         top: 50%;
@@ -251,7 +250,6 @@ main {
     width: 100%;
     overflow: hidden;
 
-
     #nav-trigger{
         pointer-events: none;
         position: absolute;
@@ -267,7 +265,18 @@ section, header {
     width: 100%;
 }
 
-section { padding: var(--pad-medium); }
+section { 
+    padding-inline: var(--pad-medium); 
+    padding-block: 4rem;
+
+    @media (width > 800px) {
+        padding-block: 6rem;
+    }
+
+    @media (width > 1000px) {
+        padding-block: 10rem;
+    }
+}
 
 ul {
     display: flex;
@@ -375,8 +384,8 @@ nav {
                 background-color: var(--dark);
                 padding: var(--pad-btn);
                 text-align: center;
-                width: 2.25rem;
-                height: 2.25rem;
+                width: 2.1rem;
+                height: 2.1rem;
 
                 @media (width > 600px) {
                     padding-block: var(--pad-fltr-btn-block);
@@ -572,6 +581,8 @@ footer {
 }
 
 /* ------------- HERO SECTION ------------- */
+.hero, footer { pointer-events: none; }
+
 .hero {
     position: relative;
     padding: var(--pad-medium);
@@ -713,14 +724,6 @@ html[data-scroll-dir="up"] .sizer-primary {
 .sizer-primary.show {
     transform: scale(1);
 }
-
-/* canvas {
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    left: 0;
-    top: 0;
-} */
 
 /* ------------- CUSTOMIZATION ELEMENTS ------------- */
 /* DATA RELATED SPRAY MASKS */
@@ -890,4 +893,14 @@ li[data-category="link"]:nth-child(even) .other-marker-4 {
     right: 0;
     transform: translate(30%, -10%);
     width: 45%;
+}
+
+#draw {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    display: block;
 }
