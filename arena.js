@@ -89,9 +89,6 @@ let renderBlock = (blockData) => {
 		let linkItem =
 		`
 		<li class="list-item" data-category="link">
-			<header class="sizer-secondary">
-				<p class="footnote">${ blockData.title }</p>
-			</header>
 			<article class="sizer-primary img">
 				<img class="other-marker-3" src="assets/blob-blue.svg" alt="" aria-hidden="true">
 				<img class="other-marker-4" src="assets/blob-black.svg" alt="" aria-hidden="true">
@@ -101,9 +98,6 @@ let renderBlock = (blockData) => {
 					</a>
 				</div>
 			</article>
-			<header class="sizer-secondary">
-				<p class="footnote">${ blockData.title }</p>
-			</header>
 		</li>
 		`
 
@@ -115,9 +109,6 @@ let renderBlock = (blockData) => {
 		let imageItem =
 		`
 		<li class="list-item" data-category="image">
-            <header class="sizer-secondary">
-                <p class="footnote">${ blockData.title }</p>
-            </header>
             <article class="sizer-primary img">
 				<img class="other-marker-1" src="assets/blob-gray.svg" alt="" aria-hidden="true">
 				<img class="other-marker-2" src="assets/blob-orange.svg" alt="" aria-hidden="true">
@@ -125,9 +116,6 @@ let renderBlock = (blockData) => {
 					<img src="${blockData.image.medium.src_2x}" alt="">
                 </div>
             </article>
-            <header class="sizer-secondary">
-            	<p class="footnote">${ blockData.title }</p>
-            </header>
         </li>
 		`
 
@@ -159,13 +147,7 @@ let renderBlock = (blockData) => {
 			let textItem =
 			`
 			<li class="list-item" data-category="text">
-				<header class="sizer-secondary">
-					<p class="footnote">${ blockData.title }</p>
-				</header>
 				<article class="sizer-primary text text-marker"></article>
-				<header class="sizer-secondary">
-					<p class="footnote">${ blockData.title }</p>
-				</header>
 			</li>
 			`
 
@@ -183,9 +165,6 @@ let renderBlock = (blockData) => {
 			let videoItem =
 			`
 			<li class="list-item" data-category="video">
-				<header class="sizer-secondary">
-					<p class="footnote">${blockData.title}</p>
-				</header>
 				<article class="sizer-primary vid">
 					<img class="video-marker" src="assets/video-marker.svg" alt="" aria-hidden="true">
 					<div class="masked">
@@ -194,9 +173,6 @@ let renderBlock = (blockData) => {
 						</a>
 					</div>
 				</article>
-				<header class="sizer-secondary">
-					<p class="footnote">${blockData.title}</p>
-				</header>
 			</li>
 			`
 
@@ -210,9 +186,6 @@ let renderBlock = (blockData) => {
 			let pdfItem = 
 			`
 			<li class="list-item" data-category="text">
-				<header class="sizer-secondary">
-					<p class="footnote">${blockData.title}</p>
-				</header>
 				<article class="sizer-primary doc">
 					<img class="pdf-marker" src="assets/read-marker.svg" alt="" aria-hidden="true">
 					<div class="masked">
@@ -221,9 +194,6 @@ let renderBlock = (blockData) => {
 						</a>
 					</div>
 				</article>
-				<header class="sizer-secondary">
-					<p class="footnote">${blockData.title}</p>
-				</header>
 			</li>
 			`
 
@@ -256,13 +226,7 @@ let renderBlock = (blockData) => {
 			let audioItem =
 				`
 				<li class="list-item" data-category="audio">
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title }</p>
-                    </header>
 					<article class="sizer-primary img audio-marker"></article>
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title }</p>
-                    </header>
                 </li>
 				`
 
@@ -281,9 +245,6 @@ let renderBlock = (blockData) => {
 			let linkedVideoItem = 
 			`
 				<li class="list-item" data-category="video">
-					<header class="sizer-secondary">
-						<p class="footnote">${blockData.title}</p>
-					</header>
 					<article class="sizer-primary vid">
 						<img class="video-marker" src="assets/video-marker.svg" alt="" aria-hidden="true">
 						<div class="masked">
@@ -292,9 +253,6 @@ let renderBlock = (blockData) => {
 							</a>
 						</div>
 					</article>
-					<header class="sizer-secondary">
-						<p class="footnote">${blockData.title}</p>
-					</header>
 				</li>
 			`
 
@@ -326,13 +284,7 @@ let renderBlock = (blockData) => {
 			let linkedAudioItem =
 				`
 				<li class="list-item" data-category="audio">
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title }</p>
-                    </header>
 					<article class="sizer-primary img audio-marker"></article>
-                    <header class="sizer-secondary">
-                        <p class="footnote">${ blockData.title }</p>
-                    </header>
                 </li>
 				`
 
@@ -466,36 +418,46 @@ const listWrappers = document.querySelectorAll('.sizer-primary');
 listWrappers.forEach(el => observer.observe(el))
 
 // INTERSECTION OBSERVER for .nav.bottom
-// Follow .hero section
-// const heroTrigger = document.querySelector('.hero');
-
-// if (heroTrigger) {
-// 	const navObserver = new IntersectionObserver(
-// 		([entry]) => {
-// 			const showNav = entry.intersectionRatio < 0.8; 
-// 			document.documentElement.classList.toggle('nav-visible', showNav); // When I scroll 20% of .hero appear
-// 		},
-// 			{threshold: [0.8] } // Use callbak on 80% of .hero appear when back
-// 	);
-
-// 	navObserver.observe(heroTrigger);
-// }
-
+// Follow .hero and .footer sections
 const heroTrigger = document.querySelector('.hero');
+const footerTrigger = document.querySelector('footer');
+
+let heroOut = false;
+let footerIn = false;
+
+function updateNav() {
+  // нав показываем только если hero уже не виден и футер НЕ виден
+	document.documentElement.classList.toggle('nav-visible', heroOut && !footerIn);
+}
 
 if (heroTrigger) {
-	const navObserver = new IntersectionObserver(
+	const heroObserver = new IntersectionObserver(
 		([entry]) => {
-		document.documentElement.classList.toggle('nav-visible', !entry.isIntersecting);
-    },
-    {
-    	threshold: 0,
-    	// Trigger on 60% viewport top
-    	rootMargin: "-60% 0px 0px 0px",
-    }
-  );
+			heroOut = !entry.isIntersecting;
+			updateNav();
+		},
+		{
+    		threshold: 0,
+    		rootMargin: "-60% 0% 0% 0%",
+    	}
+  	);
 
-  navObserver.observe(heroTrigger);
+	heroObserver.observe(heroTrigger);
+}
+
+if (footerTrigger) {
+	const footerObserver = new IntersectionObserver(
+		([entry]) => {
+			footerIn = entry.isIntersecting;
+			updateNav();
+		},
+		{
+    		threshold: 0,
+    		rootMargin: "0% 0% 0% 0%",
+    	}
+  	);
+
+	footerObserver.observe(footerTrigger);
 }
 
 // SCROLL DIRECTION CHECKER. Checks scroll direction 
