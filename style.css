@@ -116,18 +116,12 @@
     }
 
     /* ------------- FONT SIZE ------------- */
-    --h2-title: 1.25rem;
     --bodycopy: 0.75rem;
     --footnote: 0.625rem;
 
     @media (width > 600px) {
-        --h2-title: 1.75rem;
         --bodycopy: 1rem;
         --footnote: 0.75rem;
-    }
-
-    @media (width > 800px) {
-        --h2-title: 2rem;
     }
 }
 
@@ -585,8 +579,6 @@ footer {
 }
 
 /* ------------- HERO SECTION ------------- */
-.hero, footer { pointer-events: none; }
-
 .hero {
     position: relative;
     padding: var(--pad-medium);
