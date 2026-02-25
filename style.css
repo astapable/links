@@ -627,7 +627,7 @@ footer {
         &:nth-child(13n + 12) .sizer-primary{ margin-inline-start: auto;  margin-inline-end: -7%; }
 
     .sizer-primary {
-        width: 85%;
+        width: 100%;
 
         @media (width > 600px) { 
             width: 75%;
