@@ -40,12 +40,15 @@
     background-color: var(--black);
 
     /* ------------- PRIMARY COLORS ------------- */
+    --dark: #1C1C1C;
     --black: #2C2C2C;
     --dark-gray: #383838;
     --gray: #A6A6A6;
     --white: #FAF9F8;
     --blue-gray: #8EA5AF;
     --NYC-orange: #E36510;
+    --NYC-blue: #3E72D1;
+    --NYC-gray: #A6A6A6;
 
     /* ------------- GAP ------------- */
     --gap-medium: 0.75rem;
@@ -162,6 +165,7 @@ p {
     pointer-events: none;
     margin-block: -2rem;
     filter: blur(5px);
+    margin-block-end: 2rem;
 
 
     @media (width > 800px) {
@@ -269,10 +273,20 @@ section { padding: var(--pad-medium); }
 ul {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    padding-inline: 2rem;
+    gap: 2rem;
+
+    @media (width > 600px) {
+        padding-inline: 4rem;
+    }
 
     @media (width > 800px) {
-        gap: 6rem;
+        padding-inline: 6rem;
+        gap: 0rem;
+    }
+
+    @media (width > 1000px) {
+        padding-inline: 10rem;
     }
 }
 
@@ -302,7 +316,7 @@ nav {
 
         .btn {
             color: var(--white);
-            background-color: var(--black);
+            background-color: var(--dark);
             padding: var(--pad-btn);
             text-transform: uppercase;
             text-align: center;
@@ -324,8 +338,8 @@ nav {
             }
 
             &:hover {
-                color: var(--black);
-                background-color: var(--white);
+                color: var(--white);
+                background-color: var(--NYC-orange);
             }
 
             .icon {
@@ -347,7 +361,7 @@ nav {
         #filter-menu {
             display: flex;
             flex-direction: row;
-            background-color: var(--black);
+            background-color: var(--dark);
             padding: 0.25rem;
             gap: 0rem;
             width: auto;
@@ -359,7 +373,7 @@ nav {
                 cursor: pointer;
                 pointer-events: auto;
                 color: var(--white);
-                background-color: var(--black);
+                background-color: var(--dark);
                 padding: var(--pad-btn);
                 text-align: center;
                 width: 2.25rem;
@@ -382,7 +396,7 @@ nav {
             
                 &:hover {
                     color: var(--white);
-                    background-color: var(--dark-gray);
+                    background-color: var(--NYC-orange);
                 }
 
                 &.active {
@@ -443,6 +457,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: var(--pad-medium);
+    margin-block-start: 2rem;
 
     header {
         display: flex;
@@ -585,6 +600,23 @@ footer {
     }
 }
 
+.list-item:nth-child(13n + 1) .sizer-primary { margin-left: -10%; margin-right: auto; }
+.list-item:nth-child(13n + 4) .sizer-primary { margin-left: -6%;  margin-right: auto; }
+.list-item:nth-child(13n + 7) .sizer-primary { margin-left: -3%;  margin-right: auto; }
+.list-item:nth-child(13n + 10) .sizer-primary{ margin-left: -8%;  margin-right: auto; }
+
+/* ---------- CENTER (чуть хаоса вокруг центра) ---------- */
+.list-item:nth-child(13n + 2) .sizer-primary { margin-left: auto;  margin-right: auto; }
+.list-item:nth-child(13n + 5) .sizer-primary { margin-left: auto;  margin-right: auto; margin-left: 2%; }
+.list-item:nth-child(13n + 8) .sizer-primary { margin-left: auto;  margin-right: auto; margin-right: 2%; }
+.list-item:nth-child(13n + 11) .sizer-primary{ margin-left: auto;  margin-right: auto; margin-left: 1%; }
+
+/* ---------- RIGHT (разные сдвиги) ---------- */
+.list-item:nth-child(13n + 3) .sizer-primary { margin-left: auto;  margin-right: -9%; }
+.list-item:nth-child(13n + 6) .sizer-primary { margin-left: auto;  margin-right: -5%; }
+.list-item:nth-child(13n + 9) .sizer-primary { margin-left: auto;  margin-right: -3%; }
+.list-item:nth-child(13n + 12) .sizer-primary{ margin-left: auto;  margin-right: -7%; }
+
 /* ------------- CMS SYSTEM STYLES -------------*/
 .list-item {
     display: flex;
@@ -592,16 +624,40 @@ footer {
     align-items: center;
     width: 100%;
     gap: var(--gap-medium);
+    margin-left: auto;
+    margin-right: auto;
+    
+        /* LEFT */
+        &:nth-child(13n + 1) .sizer-primary { margin-inline-start: -10%; margin-inline-end: auto; }
+        &:nth-child(13n + 4) .sizer-primary { margin-inline-start: -6%;  margin-inline-end: auto; }
+        &:nth-child(13n + 7) .sizer-primary { margin-inline-start: -3%;  margin-inline-end: auto; }
+        &:nth-child(13n + 10) .sizer-primary{ margin-inline-start: -8%;  margin-inline-end: auto; }
+
+        /* CENTER */
+        &:nth-child(13n + 2) .sizer-primary { margin-inline-start: auto;  margin-inline-end: auto; }
+        &:nth-child(13n + 5) .sizer-primary { margin-inline-start: 2%;  margin-inline-end: auto;  }
+        &:nth-child(13n + 8) .sizer-primary { margin-inline-start: auto;  margin-inline-end: 2%;  }
+        &:nth-child(13n + 11) .sizer-primary{ margin-inline-start: 1%;  margin-inline-end: auto;  }
+
+        /* RIGHT */
+        &:nth-child(13n + 3) .sizer-primary { margin-inline-start: auto;  margin-inline-end: -9%; }
+        &:nth-child(13n + 6) .sizer-primary { margin-inline-start: auto;  margin-inline-end: -5%; }
+        &:nth-child(13n + 9) .sizer-primary { margin-inline-start: auto;  margin-inline-end: -3%; }
+        &:nth-child(13n + 12) .sizer-primary{ margin-inline-start: auto;  margin-inline-end: -7%; }
 
     .sizer-primary {
-        width: 100%;
+        width: 70%;
+
+        @media (width > 600px) { 
+            width: 65%;
+        }
 
         @media (width > 1000px) { 
             width: 50%;
         }
 
         @media (width > 1200px) { 
-            width: 40%;
+            width: 50%;
         }
 
         /* IMAGE */
@@ -654,16 +710,6 @@ footer {
                 display: block;
                 object-fit: cover;
             }
-        }
-    }
-
-    .sizer-secondary {
-        display: none;
-
-        @media (width > 1000px) {
-            display: block;
-            width: 18%;
-            text-wrap: balance;
         }
     }
 }
@@ -864,4 +910,3 @@ li[data-category="link"]:nth-child(even) .other-marker-4 {
     transform: translate(30%, -10%);
     width: 45%;
 }
-
