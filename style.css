@@ -136,7 +136,7 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 2;
+    z-index: 4;
     background-image: url("assets/noise.gif");
     background-repeat: repeat;
     background-size: 500px 700px;
@@ -374,6 +374,10 @@ nav {
             gap: 0.35rem;
             width: auto;
 
+            @media (width > 600px) {
+                gap: 0.25rem;
+            }
+
             .filter-btn {
                 display: flex;
                 align-items: center;
@@ -391,7 +395,7 @@ nav {
                     padding-block: var(--pad-fltr-btn-block);
                     padding-inline: var(--pad-fltr-btn-inline);
                     width: auto;
-                    height: auto;
+                    height: 100%;
                 }
 
                 .icon path {
